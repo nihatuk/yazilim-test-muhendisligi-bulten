@@ -9,6 +9,9 @@ jobs:
   bulten:
     runs-on: ubuntu-latest
 
+    permissions:
+      contents: write        # ← git push için şart!
+
     steps:
       - name: 📥 Kodu çek
         uses: actions/checkout@v3
