@@ -89,8 +89,13 @@ def publish_to_wordpress(html_content):
     post_data = {
         "title": title,
         "content": html_content,
-        "status": "publish"
+        "status": "publish",
+        "slug": "bulten-" + datetime.now().strftime("%Y-%m-%d")
     }
+
+    print("WP_URL:", WP_URL)
+    print("WP_USERNAME:", WP_USERNAME)
+    print("WP_APP_PASSWORD uzunlugu:", len(WP_APP_PASSWORD) if WP_APP_PASSWORD else "YOK!")
 
     response = requests.post(
         WP_URL + "/wp-json/wp/v2/posts",
@@ -99,14 +104,13 @@ def publish_to_wordpress(html_content):
         headers={"Content-Type": "application/json"}
     )
 
-    # ✅ DÜZELTME: if/else artık fonksiyon içinde, doğru girintide
+    print("Status Code:", response.status_code)
+    print("Response:", response.text[:500])  # ilk 500 karakter
+
     if response.status_code in [200, 201]:
         post = response.json()
-
-        # WordPress bazen liste döndürüyor, ilk elemanı al
         if isinstance(post, list):
             post = post[0]
-
         print("WordPress'e yayinlandi!")
         print("URL: " + post.get('link', ''))
         return post.get('link', '')
