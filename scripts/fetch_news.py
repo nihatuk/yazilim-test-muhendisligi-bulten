@@ -35,4 +35,51 @@ def fetch_weekly_news():
         print(f"📡 {feed_info['name']} okunuyor...")
         
         try:
-            feed = feedparser.parse(feed_info
+            feed = feedparser.parse(feed_info['url'])
+            count = 0
+            
+            for entry in feed.entries:
+                if not is_recent(entry):
+                    continue
+                    
+                # Özet al (summary veya description)
+                summary = ""
+                if hasattr(entry, 'summary'):
+                    summary = clean_text(entry.summary)
+                elif hasattr(entry, 'description'):
+                    summary = clean_text(entry.description)
+                
+                news_items.append({
+                    'title': entry.get('title', 'Başlık yok'),
+                    'link': entry.get('link', ''),
+                    'summary': summary,
+                    'source': feed_info['name'],
+                    'date': entry.get('published', datetime.now().isoformat())
+                })
+                count += 1
+                
+                if count >= 5:  # Her kaynaktan max 5 haber
+                    break
+                    
+            print(f"   ✅ {count} haber bulundu")
+            
+        except Exception as e:
+            print(f"   ❌ Hata: {e}")
+    
+    # data/ klasörüne kaydet
+    os.makedirs('data', exist_ok=True)
+    output_file = 'data/weekly_news.json'
+    
+    with open(output_file, 'w', encoding='utf-8') as f:
+        json.dump({
+            'fetched_at': datetime.now().isoformat(),
+            'total': len(news_items),
+            'items': news_items
+        }, f, ensure_ascii=False, indent=2)
+    
+    print(f"\n✅ Toplam {len(news_items)} haber kaydedildi!")
+    print(f"📄 Dosya: {output_file}")
+    return news_items
+
+if __name__ == "__main__":
+    fetch_weekly_news()
