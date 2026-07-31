@@ -1,9 +1,9 @@
-name: Bülten Oluştur
+name: Haftalık Bülten
 
 on:
   workflow_dispatch:
   schedule:
-    - cron: '0 9 * * 1'
+    - cron: '0 9 * * 1'  # Her Pazartesi 09:00 UTC
 
 permissions:
   contents: write
@@ -13,29 +13,36 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Kodu çek
+      - name: 📥 Kodu çek
         uses: actions/checkout@v4
 
-      - name: Python kur
+      - name: 🐍 Python kur
         uses: actions/setup-python@v5
         with:
           python-version: '3.11'
 
-      - name: Kütüphaneleri yükle
+      - name: 📦 Kütüphaneleri yükle
         run: pip install -r requirements.txt
 
-      - name: Haberleri topla
-        env:
-          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+      - name: 📡 Haberleri topla
         run: python scripts/fetch_news.py
 
-      - name: HTML bülten oluştur
-        run: python scripts/generate_html.py
+      - name: 🤖 ChatGPT ile analiz et
+        env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+        run: python scripts/ai_analyze.py
 
-      - name: Repoya kaydet
+      - name: 🚀 WordPress'e yayınla
+        env:
+          WP_URL: ${{ secrets.WP_URL }}
+          WP_USERNAME: ${{ secrets.WP_USERNAME }}
+          WP_APP_PASSWORD: ${{ secrets.WP_APP_PASSWORD }}
+        run: python scripts/publish_wordpress.py
+
+      - name: 💾 Repoya kaydet
         run: |
           git config user.name "github-actions"
           git config user.email "actions@github.com"
-          git add data/weekly_news.json bulletins/index.html
+          git add data/weekly_news.json
           git commit -m "📰 Bülten güncellendi - $(date +'%Y-%m-%d')" || echo "Değişiklik yok"
           git push
