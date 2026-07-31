@@ -1,45 +1,88 @@
 import feedparser
+import yaml
 import json
 import os
+import re
 import time
-from datetime import datetime
+from datetime import datetime, timedelta
 from openai import OpenAI
 
 client = OpenAI(api_key=os.environ.get("OPENAI_API_KEY"))
 
-FEEDS = [
-    {"url": "https://www.ministryoftesting.com/feed", "source": "Ministry of Testing"},
-    {"url": "https://feeds.feedburner.com/TestingCurator", "source": "Testing Curator"},
-    {"url": "https://www.stickyminds.com/rss.xml", "source": "StickyMinds"},
-    {"url": "https://feeds.feedburner.com/SoftwareTestingHelp", "source": "Software Testing Help"},
-    {"url": "https://www.ontestautomation.com/feed/", "source": "On Test Automation"},
-]
-
 NIHAT_UK_URL = "https://nihatuk.com/feed/"
 
+# ─────────────────────────────────────────
+# 1. KAYNAK YÜKLEME
+# ─────────────────────────────────────────
+
+def load_sources():
+    """sources.yaml dosyasını oku"""
+    with open('sources.yaml', 'r', encoding='utf-8') as f:
+        return yaml.safe_load(f)
+
+# ─────────────────────────────────────────
+# 2. HABER ÇEKME
+# ─────────────────────────────────────────
+
+def is_recent(entry, days=7):
+    """Haberin son 7 günde olup olmadığını kontrol et"""
+    try:
+        published = datetime(*entry.published_parsed[:6])
+        return published > datetime.now() - timedelta(days=days)
+    except:
+        return True  # Tarih yoksa dahil et
+
+def clean_text(text, max_chars=300):
+    """HTML taglarını temizle ve kısalt"""
+    clean = re.sub(r'<[^>]+>', '', text)
+    clean = clean.replace('\n', ' ').strip()
+    return clean[:max_chars] + "..." if len(clean) > max_chars else clean
+
 def fetch_feeds():
+    """sources.yaml'daki RSS kaynaklarından haber çek"""
+    sources = load_sources()
     items = []
-    for feed_info in FEEDS:
-        print(f"📡 Çekiliyor: {feed_info['source']}")
+
+    print("🔍 Haberler toplanıyor...\n")
+
+    for feed_info in sources['rss_feeds']:
+        print(f"📡 {feed_info['name']} okunuyor...")
         try:
             feed = feedparser.parse(feed_info['url'])
-            for entry in feed.entries[:4]:
-                summary = entry.get('summary', '')
-                if len(summary) > 300:
-                    summary = summary[:300] + "..."
+            count = 0
+
+            for entry in feed.entries:
+                if not is_recent(entry):
+                    continue
+
+                summary = ""
+                if hasattr(entry, 'summary'):
+                    summary = clean_text(entry.summary)
+                elif hasattr(entry, 'description'):
+                    summary = clean_text(entry.description)
+
                 items.append({
-                    "title": entry.get('title', ''),
+                    "title": entry.get('title', 'Başlık yok'),
                     "link": entry.get('link', ''),
                     "summary": summary,
-                    "date": entry.get('published', str(datetime.now())),
-                    "source": feed_info['source'],
+                    "date": entry.get('published', datetime.now().isoformat()),
+                    "source": feed_info['name'],
                     "ai_comment": ""
                 })
+                count += 1
+
+                if count >= 5:  # Her kaynaktan max 5 haber
+                    break
+
+            print(f"   ✅ {count} haber bulundu")
+
         except Exception as e:
-            print(f"⚠️ Hata ({feed_info['source']}): {e}")
+            print(f"   ❌ Hata ({feed_info['name']}): {e}")
+
     return items
 
 def fetch_nihat_uk():
+    """Nihat Ük blogundan son yazıları çek"""
     print("📡 Nihat Ük yazıları çekiliyor...")
     try:
         feed = feedparser.parse(NIHAT_UK_URL)
@@ -55,7 +98,12 @@ def fetch_nihat_uk():
         print(f"⚠️ Nihat Ük hatası: {e}")
         return ""
 
+# ─────────────────────────────────────────
+# 3. AI ANALİZ
+# ─────────────────────────────────────────
+
 def analyze_with_ai(item):
+    """Tek bir haber için AI yorumu üret"""
     try:
         prompt = (
             f"Aşağıdaki yazılım test haberi hakkında 2-3 cümlelik Türkçe yorum yaz. "
@@ -64,7 +112,7 @@ def analyze_with_ai(item):
             f"Özet: {item['summary']}"
         )
         response = client.chat.completions.create(
-            model="gpt-3.5-turbo",
+            model="gpt-4o-mini",  # gpt-3.5-turbo yerine daha iyi ve ucuz!
             messages=[{"role": "user", "content": prompt}],
             max_tokens=150
         )
@@ -74,6 +122,7 @@ def analyze_with_ai(item):
         return ""
 
 def analyze_nihat_uk(content):
+    """Nihat Ük yazılarından köşe yazısı oluştur"""
     if not content:
         return ""
     try:
@@ -83,7 +132,7 @@ def analyze_nihat_uk(content):
             f"{content}"
         )
         response = client.chat.completions.create(
-            model="gpt-3.5-turbo",
+            model="gpt-4o-mini",
             messages=[{"role": "user", "content": prompt}],
             max_tokens=250
         )
@@ -92,7 +141,12 @@ def analyze_nihat_uk(content):
         print(f"⚠️ Nihat yorumu hatası: {e}")
         return ""
 
+# ─────────────────────────────────────────
+# 4. BÜLTEN KAYDETME
+# ─────────────────────────────────────────
+
 def save_bulletin_as_markdown(data):
+    """Bülteni Markdown formatında kaydet"""
     tarih = datetime.now().strftime("%Y-%m-%d")
     dosya = f"data/{tarih}.md"
 
@@ -106,6 +160,7 @@ def save_bulletin_as_markdown(data):
         lines.append(data['nihat_yorum'] + "\n")
         lines.append("---\n")
 
+    # Haberleri kaynağa göre grupla
     sources = {}
     for item in data['items']:
         src = item['source']
@@ -125,48 +180,56 @@ def save_bulletin_as_markdown(data):
                 lines.append(f"- 🤖 **AI Yorumu:** {article['ai_comment']}")
             lines.append("")
 
+    os.makedirs('data', exist_ok=True)
     with open(dosya, 'w', encoding='utf-8') as f:
         f.write("\n".join(lines))
 
     print(f"✅ Bülten kaydedildi: {dosya}")
     return dosya
 
+# ─────────────────────────────────────────
+# 5. ANA FONKSİYON
+# ─────────────────────────────────────────
+
 def run():
     print("🚀 Bülten hazırlanıyor...")
 
     # Haberleri çek
     items = fetch_feeds()
-    print(f"✅ {len(items)} haber bulundu")
+    print(f"\n✅ Toplam {len(items)} haber bulundu")
 
     # Nihat Ük içeriğini çek
     nihat_content = fetch_nihat_uk()
 
     # Her haberi AI ile analiz et
+    print("\n🤖 AI yorumları yazılıyor...")
     for i, item in enumerate(items):
-        print(f"🤖 {i+1}/{len(items)}: {item['title'][:50]}...")
+        print(f"   {i+1}/{len(items)}: {item['title'][:50]}...")
         item['ai_comment'] = analyze_with_ai(item)
-        time.sleep(1)
+        time.sleep(1)  # Rate limit için bekle
 
     # Nihat Ük köşesini oluştur
-    print("✍️ Nihat Ük'ün yorumu yazılıyor...")
+    print("\n✍️ Nihat Ük'ün yorumu yazılıyor...")
     nihat_yorum = analyze_nihat_uk(nihat_content)
 
-    # Veriyi kaydet
+    # JSON olarak kaydet
     data = {
-        "fetched_at": str(datetime.now()),
+        "fetched_at": datetime.now().isoformat(),
+        "total": len(items),
         "items": items,
         "nihat_yorum": nihat_yorum
     }
 
     os.makedirs("data", exist_ok=True)
-
     with open("data/weekly_news.json", 'w', encoding='utf-8') as f:
         json.dump(data, f, ensure_ascii=False, indent=2)
 
-    print("✅ Analiz tamamlandı ve kaydedildi!")
+    print("✅ JSON kaydedildi: data/weekly_news.json")
 
-    # Bülteni Markdown olarak kaydet
+    # Markdown bülten oluştur
     save_bulletin_as_markdown(data)
+
+    print("\n🎉 Bülten hazır!")
 
 if __name__ == "__main__":
     run()
