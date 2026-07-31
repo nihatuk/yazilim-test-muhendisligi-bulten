@@ -140,6 +140,43 @@ def publish_to_wordpress(html_content):
         print("HATA: Post olusturulamadi!")
         return None
 
+def test_auth():
+    print("=== AUTH TEST ===")
+    print("WP_URL:", WP_URL)
+    print("WP_USERNAME:", WP_USERNAME)
+    print("WP_APP_PASSWORD uzunlugu:", len(WP_APP_PASSWORD) if WP_APP_PASSWORD else "YOK!")
+
+    # Gizli karakter kontrolü
+    if WP_APP_PASSWORD:
+        print("ilk 3 karakter:", repr(WP_APP_PASSWORD[:3]))
+        print("son 3 karakter:", repr(WP_APP_PASSWORD[-3:]))
+        print("Bosluk var mi?:", " " in WP_APP_PASSWORD)
+        print("\\n var mi?:", "\n" in WP_APP_PASSWORD)
+        print("\\r var mi?:", "\r" in WP_APP_PASSWORD)
+        print("\\t var mi?:", "\t" in WP_APP_PASSWORD)
+
+    # Base64 token
+    import base64
+    credentials = f"{WP_USERNAME}:{WP_APP_PASSWORD}"
+    token = base64.b64encode(credentials.encode('utf-8')).decode('utf-8')
+    print("Credentials repr:", repr(credentials[:10]), "...")
+    print("Token (ilk 20):", token[:20])
+
+    headers = {
+        "Authorization": f"Basic {token}",
+        "Content-Type": "application/json"
+    }
+
+    url = WP_URL.rstrip("/") + "/wp-json/wp/v2/users/me"
+    print("İstek URL:", url)
+
+    test = requests.get(url, headers=headers)
+    print("Auth Status:", test.status_code)
+    print("Auth Response:", test.text[:400])
+    print("Gonderilen Header:", test.request.headers.get("Authorization", "YOK")[:40])
+    print("=================")
+    return test.status_code == 200
+
 def run():
     print("=== SCRIPT BASLADI ===")
 
