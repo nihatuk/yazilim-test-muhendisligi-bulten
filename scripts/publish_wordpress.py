@@ -1,11 +1,17 @@
 import json
 import os
 import requests
+import base64
 from datetime import datetime
 
 WP_URL = os.environ.get("WP_URL")
 WP_USERNAME = os.environ.get("WP_USERNAME")
 WP_APP_PASSWORD = os.environ.get("WP_APP_PASSWORD")
+
+def get_auth_header():
+    credentials = f"{WP_USERNAME}:{WP_APP_PASSWORD}"
+    token = base64.b64encode(credentials.encode('utf-8')).decode('utf-8')
+    return {"Authorization": f"Basic {token}"}
 
 def build_html_content(data):
     items = data['items']
@@ -88,9 +94,12 @@ def test_auth():
     print("WP_USERNAME:", WP_USERNAME)
     print("WP_APP_PASSWORD uzunlugu:", len(WP_APP_PASSWORD) if WP_APP_PASSWORD else "YOK!")
 
+    headers = get_auth_header()
+    headers["Content-Type"] = "application/json"
+
     test = requests.get(
         WP_URL.rstrip("/") + "/wp-json/wp/v2/users/me",
-        auth=(WP_USERNAME, WP_APP_PASSWORD)
+        headers=headers
     )
     print("Auth Status:", test.status_code)
     print("Auth Response:", test.text[:400])
@@ -108,12 +117,14 @@ def publish_to_wordpress(html_content):
         "slug": "bulten-" + datetime.now().strftime("%Y-%m-%d")
     }
 
+    headers = get_auth_header()
+    headers["Content-Type"] = "application/json"
+
     print("Post verisi gonderiliyor...")
     response = requests.post(
         WP_URL.rstrip("/") + "/wp-json/wp/v2/posts",
         json=post_data,
-        auth=(WP_USERNAME, WP_APP_PASSWORD),
-        headers={"Content-Type": "application/json"},
+        headers=headers,
         timeout=30
     )
 
@@ -132,7 +143,6 @@ def publish_to_wordpress(html_content):
 def run():
     print("=== SCRIPT BASLADI ===")
 
-    # 1. Once auth test
     auth_ok = test_auth()
     if not auth_ok:
         print("AUTH BASARISIZ! Devam edilmiyor.")
@@ -140,15 +150,12 @@ def run():
 
     print("Auth basarili, devam ediliyor...")
 
-    # 2. JSON oku
     with open('data/weekly_news.json', 'r', encoding='utf-8') as f:
         data = json.load(f)
 
-    # 3. HTML olustur
     print("HTML icerik olusturuluyor...")
     html_content = build_html_content(data)
 
-    # 4. WordPress'e gonder
     print("WordPress'e gonderiliyor...")
     publish_to_wordpress(html_content)
 
