@@ -99,16 +99,16 @@ def publish_to_wordpress(html_content):
         headers={"Content-Type": "application/json"}
     )
 
-    if response.status_code in [200, 201]:
-        post = response.json()
-        
-        # Liste olarak gelirse ilk elemanı al
-        if isinstance(post, list):
-            post = post[0]
-        
-        print("WordPress'e yayinlandi!")
-        print("URL: " + post.get('link', ''))
-        return post.get('link', '')
+if response.status_code in [200, 201]:
+    post = response.json()
+
+    # WordPress bazen liste döndürüyor, ilk elemanı al
+    if isinstance(post, list):
+        post = post[0]
+
+    print("WordPress'e yayinlandi!")
+    print("URL: " + post.get('link', ''))
+    return post.get('link', '')
     else:
         print("WordPress hatasi: " + str(response.status_code))
         print(response.text)
