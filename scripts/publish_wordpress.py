@@ -82,6 +82,21 @@ def build_html_content(data):
 
     return full_html
 
+def test_auth():
+    print("=== AUTH TEST ===")
+    print("WP_URL:", WP_URL)
+    print("WP_USERNAME:", WP_USERNAME)
+    print("WP_APP_PASSWORD uzunlugu:", len(WP_APP_PASSWORD) if WP_APP_PASSWORD else "YOK!")
+
+    test = requests.get(
+        WP_URL.rstrip("/") + "/wp-json/wp/v2/users/me",
+        auth=(WP_USERNAME, WP_APP_PASSWORD)
+    )
+    print("Auth Status:", test.status_code)
+    print("Auth Response:", test.text[:400])
+    print("=================")
+    return test.status_code == 200
+
 def publish_to_wordpress(html_content):
     tarih = datetime.now().strftime("%d %B %Y")
     title = "Yazilim Test Muhendisligi Bulteni - " + tarih
@@ -93,6 +108,7 @@ def publish_to_wordpress(html_content):
         "slug": "bulten-" + datetime.now().strftime("%Y-%m-%d")
     }
 
+    print("Post verisi gonderiliyor...")
     response = requests.post(
         WP_URL.rstrip("/") + "/wp-json/wp/v2/posts",
         json=post_data,
@@ -102,38 +118,37 @@ def publish_to_wordpress(html_content):
     )
 
     print("Status Code:", response.status_code)
+    print("Response:", response.text[:500])
 
-    if response.status_code == 201:  # ✅ Sadece 201 = gerçekten yeni post!
+    if response.status_code == 201:
         post = response.json()
         print("WordPress'e yayinlandi!")
         print("URL: " + post.get('link', ''))
         return post.get('link', '')
-    elif response.status_code == 200:
-        print("UYARI: 200 dondu, yeni post olusturulamadi!")
-        print("Response:", response.text[:300])
-        return None
     else:
-        print("WordPress hatasi: " + str(response.status_code))
-        print(response.text[:300])
+        print("HATA: Post olusturulamadi!")
         return None
-
-def test_auth():
-    test = requests.get(
-        WP_URL.rstrip("/") + "/wp-json/wp/v2/users/me",
-        auth=(WP_USERNAME, WP_APP_PASSWORD)
-    )
-    print("=== AUTH TEST ===")
-    print("Status:", test.status_code)
-    print("Response:", test.text[:400])
-    print("=================")
 
 def run():
+    print("=== SCRIPT BASLADI ===")
+
+    # 1. Once auth test
+    auth_ok = test_auth()
+    if not auth_ok:
+        print("AUTH BASARISIZ! Devam edilmiyor.")
+        return
+
+    print("Auth basarili, devam ediliyor...")
+
+    # 2. JSON oku
     with open('data/weekly_news.json', 'r', encoding='utf-8') as f:
         data = json.load(f)
 
+    # 3. HTML olustur
     print("HTML icerik olusturuluyor...")
     html_content = build_html_content(data)
 
+    # 4. WordPress'e gonder
     print("WordPress'e gonderiliyor...")
     publish_to_wordpress(html_content)
 
