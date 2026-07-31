@@ -5,6 +5,9 @@ on:
   schedule:
     - cron: '0 9 * * 1'
 
+permissions:
+  contents: write
+
 jobs:
   bulten:
     runs-on: ubuntu-latest
@@ -21,7 +24,18 @@ jobs:
       - name: Kütüphaneleri yükle
         run: pip install -r requirements.txt
 
-      - name: Script'i çalıştır
+      - name: Haberleri topla
         env:
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
         run: python scripts/fetch_news.py
+
+      - name: HTML bülten oluştur
+        run: python scripts/generate_html.py
+
+      - name: Repoya kaydet
+        run: |
+          git config user.name "github-actions"
+          git config user.email "actions@github.com"
+          git add data/weekly_news.json bulletins/index.html
+          git commit -m "📰 Bülten güncellendi - $(date +'%Y-%m-%d')" || echo "Değişiklik yok"
+          git push
