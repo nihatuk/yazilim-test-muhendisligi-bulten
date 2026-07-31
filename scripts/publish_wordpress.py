@@ -93,30 +93,28 @@ def publish_to_wordpress(html_content):
         "slug": "bulten-" + datetime.now().strftime("%Y-%m-%d")
     }
 
-    print("WP_URL:", WP_URL)
-    print("WP_USERNAME:", WP_USERNAME)
-    print("WP_APP_PASSWORD uzunlugu:", len(WP_APP_PASSWORD) if WP_APP_PASSWORD else "YOK!")
-
     response = requests.post(
-        WP_URL + "/wp-json/wp/v2/posts",
+        WP_URL.rstrip("/") + "/wp-json/wp/v2/posts",
         json=post_data,
         auth=(WP_USERNAME, WP_APP_PASSWORD),
-        headers={"Content-Type": "application/json"}
+        headers={"Content-Type": "application/json"},
+        timeout=30
     )
 
     print("Status Code:", response.status_code)
-    print("Response:", response.text[:500])  # ilk 500 karakter
 
-    if response.status_code in [200, 201]:
+    if response.status_code == 201:  # ✅ Sadece 201 = gerçekten yeni post!
         post = response.json()
-        if isinstance(post, list):
-            post = post[0]
         print("WordPress'e yayinlandi!")
         print("URL: " + post.get('link', ''))
         return post.get('link', '')
+    elif response.status_code == 200:
+        print("UYARI: 200 dondu, yeni post olusturulamadi!")
+        print("Response:", response.text[:300])
+        return None
     else:
         print("WordPress hatasi: " + str(response.status_code))
-        print(response.text)
+        print(response.text[:300])
         return None
 
 def run():
