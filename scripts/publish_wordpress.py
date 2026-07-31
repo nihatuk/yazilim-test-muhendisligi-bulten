@@ -117,6 +117,16 @@ def publish_to_wordpress(html_content):
         print(response.text[:300])
         return None
 
+def test_auth():
+    test = requests.get(
+        WP_URL.rstrip("/") + "/wp-json/wp/v2/users/me",
+        auth=(WP_USERNAME, WP_APP_PASSWORD)
+    )
+    print("=== AUTH TEST ===")
+    print("Status:", test.status_code)
+    print("Response:", test.text[:400])
+    print("=================")
+
 def run():
     with open('data/weekly_news.json', 'r', encoding='utf-8') as f:
         data = json.load(f)
