@@ -4,6 +4,10 @@ import requests
 import base64
 from datetime import datetime
 
+wp_user = os.environ.get("WP_USERNAME", "YOK")
+print("USERNAME UZUNLUK:", len(wp_user))
+print("USERNAME KARAKTERLER:", [c for c in wp_user])
+
 WP_URL = os.environ.get("WP_URL")
 WP_USERNAME = os.environ.get("WP_USERNAME")
 WP_APP_PASSWORD = os.environ.get("WP_APP_PASSWORD")
