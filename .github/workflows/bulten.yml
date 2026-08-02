@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
 
     permissions:
-      contents: write        # ← git push için şart!
+      contents: write
 
     steps:
       - name: 📥 Kodu çek
@@ -21,21 +21,35 @@ jobs:
       - name: 🐍 Python kur
         uses: actions/setup-python@v4
         with:
-          python-version: '3.11'
+          python-version: "3.11"
 
       - name: 📦 Kütüphaneleri yükle
-        run: pip install -r requirements.txt
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
 
       - name: 📡 Haberleri topla ve analiz et
         env:
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
         run: python scripts/ai_analyze.py
 
+      - name: 🔍 Secrets Kontrolü
+        env:
+          WP_URL: ${{ secrets.WP_URL }}
+          WP_USERNAME: ${{ secrets.WP_USERNAME }}
+          WP_PASSWORD: ${{ secrets.WP_PASSWORD }}
+        run: |
+          echo "=============================="
+          echo "WP_URL      : ${WP_URL:+SET}"
+          echo "WP_USERNAME : ${WP_USERNAME:+SET}"
+          echo "WP_PASSWORD : ${WP_PASSWORD:+SET}"
+          echo "=============================="
+
       - name: 🚀 WordPress'e yayınla
         env:
           WP_URL: ${{ secrets.WP_URL }}
           WP_USERNAME: ${{ secrets.WP_USERNAME }}
-          WP_APP_PASSWORD: ${{ secrets.WP_PASSWORD }}
+          WP_PASSWORD: ${{ secrets.WP_PASSWORD }}
         run: python scripts/publish_wordpress.py
 
       - name: 💾 Repoya kaydet
