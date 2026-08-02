@@ -1,16 +1,30 @@
 import json
 import os
 import requests
-import base64
 from datetime import datetime
-
-wp_user = os.environ.get("WP_USERNAME", "YOK")
-print("USERNAME UZUNLUK:", len(wp_user))
-print("USERNAME KARAKTERLER:", [c for c in wp_user])
 
 WP_URL = os.environ.get("WP_URL")
 WP_USERNAME = os.environ.get("WP_USERNAME")
-WP_APP_PASSWORD = os.environ.get("WP_APP_PASSWORD")
+WP_PASSWORD = os.environ.get("WP_PASSWORD")
+
+def get_jwt_token():
+    url = WP_URL.rstrip("/") + "/wp-json/jwt-auth/v1/token"
+
+    response = requests.post(
+        url,
+        json={
+            "username": WP_USERNAME,
+            "password": WP_PASSWORD
+        },
+        timeout=30
+    )
+
+    if response.status_code != 200:
+        print("JWT LOGIN FAILED")
+        print(response.text)
+        return None
+
+    return response.json()["token"]
 
 def get_auth_header():
     credentials = f"{WP_USERNAME}:{WP_APP_PASSWORD}"
