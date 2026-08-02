@@ -12,6 +12,8 @@ WP_URL = os.getenv("WP_URL")
 WP_USERNAME = os.getenv("WP_USERNAME")
 WP_PASSWORD = os.getenv("WP_PASSWORD")
 
+print("WP_URL =", repr(WP_URL))
+
 print("========== WORDPRESS ENV ==========")
 print("WP_URL       :", WP_URL if WP_URL else "YOK")
 print("WP_USERNAME  :", WP_USERNAME if WP_USERNAME else "YOK")
