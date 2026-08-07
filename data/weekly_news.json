@@ -1,28 +1,20 @@
 {
-  "fetched_at": "2026-08-02T11:48:05.582899",
-  "total": 3,
+  "fetched_at": "2026-08-07T15:38:11.209343",
+  "total": 2,
   "items": [
     {
-      "title": "Test Automation Won’t Save Your QA Career, but These Skills Will with Keith Klain",
-      "link": "https://testguild.com/podcast/a598-keith/",
-      "summary": "About This Episode: Keith Klain has spent 25+ years leading enterprise quality programs in financial services and is one of [&hellip;]",
-      "date": "Tue, 28 Jul 2026 19:32:00 GMT",
+      "title": "What Is AI-DLC? The AI Delivery Lifecycle for Governed Software Delivery",
+      "link": "https://testguild.com/what-is-ai-dlc/",
+      "summary": "A Director of Sales hit me with &#8220;AI-DLC&#8221; last week like I should already know it. I nodded. Then I [&hellip;]",
+      "date": "Thu, 06 Aug 2026 08:00:05 GMT",
       "source": "Test Guild",
       "ai_comment": ""
     },
     {
-      "title": "Sauce Labs AURA, Playwright Tracing, Loop Engineering and More TGNS191",
-      "link": "https://testguild.com/podcast/n191-jul27/",
-      "summary": "About This Episode: Did you know that more than half of enterprises admit they ship code with known critical defects? [&hellip;]",
-      "date": "Mon, 27 Jul 2026 21:43:05 GMT",
-      "source": "Test Guild",
-      "ai_comment": ""
-    },
-    {
-      "title": "What Changes for Your Team with Amikoo",
-      "link": "https://testguild.com/amikoo-ai-test-agents/",
-      "summary": "Your developers are shipping more code than they were a year ago. Probably a lot more. And your test coverage [&hellip;]",
-      "date": "Sun, 26 Jul 2026 19:28:28 GMT",
+      "title": "Playwright With AI: How to Automate Tests Without Shipping AI Slop with Andrew Knight",
+      "link": "https://testguild.com/podcast/a599-andrew/",
+      "summary": "About This Episode: Your developers just got supercharged by AI coding agents. Your test coverage did not. So how do [&hellip;]",
+      "date": "Tue, 04 Aug 2026 14:13:27 GMT",
       "source": "Test Guild",
       "ai_comment": ""
     }
