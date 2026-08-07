@@ -112,9 +112,8 @@ def analyze_with_ai(item):
             f"Özet: {item['summary']}"
         )
         response = client.models.generate_content(
-            #model="gemini-1.5-flash-latest",  # 2.0-flash yerine 1.5-flash
             model="gemini-2.0-flash-lite",
-            config={"timeout": 15}
+            config={"timeout": 15},  # ✅ Virgül eklendi
             contents=prompt
         )
         return response.text.strip()
@@ -133,9 +132,8 @@ def analyze_nihat_uk(content):
             f"{content}"
         )
         response = client.models.generate_content(
-            #model="gemini-1.5-flash-latest",  # 2.0-flash yerine 1.5-flash
             model="gemini-2.0-flash-lite",
-            config={"timeout": 15}
+            config={"timeout": 15},  # ✅ Virgül eklendi
             contents=prompt
         )
         return response.text.strip()
