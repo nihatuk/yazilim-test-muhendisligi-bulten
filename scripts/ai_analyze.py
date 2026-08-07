@@ -113,7 +113,8 @@ def analyze_with_ai(item):
         )
         response = client.models.generate_content(
             #model="gemini-1.5-flash-latest",  # 2.0-flash yerine 1.5-flash
-            model="gemini-2.0-flash-lite",  # ÜCRETSİZ ✅
+            model="gemini-2.0-flash-lite",
+            config={"timeout": 15}
             contents=prompt
         )
         return response.text.strip()
@@ -133,7 +134,8 @@ def analyze_nihat_uk(content):
         )
         response = client.models.generate_content(
             #model="gemini-1.5-flash-latest",  # 2.0-flash yerine 1.5-flash
-            model="gemini-2.0-flash-lite",  # ÜCRETSİZ ✅
+            model="gemini-2.0-flash-lite",
+            config={"timeout": 15}
             contents=prompt
         )
         return response.text.strip()
