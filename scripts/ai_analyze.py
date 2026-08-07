@@ -5,10 +5,9 @@ import os
 import re
 import time
 from datetime import datetime, timedelta
-import google.generativeai as genai
+from google import genai
 
-genai.configure(api_key=os.environ.get("GEMINI_API_KEY"))
-client = genai.GenerativeModel("gemini-1.5-flash")
+client = genai.Client(api_key=os.environ.get("GEMINI_API_KEY"))
 
 NIHAT_UK_URL = "https://yazilimtestmuhendisligi.com/feed/"
 
@@ -112,7 +111,10 @@ def analyze_with_ai(item):
             f"Başlık: {item['title']}\n"
             f"Özet: {item['summary']}"
         )
-        response = client.generate_content(prompt)
+        response = client.models.generate_content(
+            model="gemini-2.0-flash",
+            contents=prompt
+        )
         return response.text.strip()
     except Exception as e:
         print(f"⚠️ AI yorum hatası: {e}")
@@ -128,7 +130,10 @@ def analyze_nihat_uk(content):
             f"yazılım test mühendisleri için 3-4 cümlelik Türkçe bir köşe yazısı oluştur:\n\n"
             f"{content}"
         )
-        response = client.generate_content(prompt)
+        response = client.models.generate_content(
+            model="gemini-2.0-flash",
+            contents=prompt
+        )
         return response.text.strip()
     except Exception as e:
         print(f"⚠️ Nihat yorumu hatası: {e}")
