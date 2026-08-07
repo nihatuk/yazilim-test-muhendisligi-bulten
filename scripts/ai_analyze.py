@@ -115,7 +115,7 @@ def analyze_with_ai(item):
             f"Başlık: {item['title']}\n"
             f"Özet: {item['summary']}"
         )
-        #response = client.chat.completions.create(
+        (#response = client.chat.completions.create(
             #model="gpt-4o-mini",  # gpt-3.5-turbo yerine daha iyi ve ucuz!
             #messages=[{"role": "user", "content": prompt}],
             #max_tokens=150
@@ -137,7 +137,7 @@ def analyze_nihat_uk(content):
             f"yazılım test mühendisleri için 3-4 cümlelik Türkçe bir köşe yazısı oluştur:\n\n"
             f"{content}"
         )
-        #response = client.chat.completions.create(
+        (#response = client.chat.completions.create(
             #model="gpt-4o-mini",
             #messages=[{"role": "user", "content": prompt}],
             #max_tokens=250
