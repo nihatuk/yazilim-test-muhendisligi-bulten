@@ -5,11 +5,15 @@ import os
 import re
 import time
 from datetime import datetime, timedelta
-from openai import OpenAI
+#from openai import OpenAI
 
-client = OpenAI(api_key=os.environ.get("OPENAI_API_KEY"))
+#client = OpenAI(api_key=os.environ.get("OPENAI_API_KEY"))
 
-NIHAT_UK_URL = "https://nihatuk.com/feed/"
+import google.generativeai as genai
+genai.configure(api_key=os.environ.get("GEMINI_API_KEY"))
+client = genai.GenerativeModel("gemini-1.5-flash")
+
+NIHAT_UK_URL = "https://yazilimtestmuhendisligi.com/feed/"
 
 # ─────────────────────────────────────────
 # 1. KAYNAK YÜKLEME
@@ -111,12 +115,14 @@ def analyze_with_ai(item):
             f"Başlık: {item['title']}\n"
             f"Özet: {item['summary']}"
         )
-        response = client.chat.completions.create(
-            model="gpt-4o-mini",  # gpt-3.5-turbo yerine daha iyi ve ucuz!
-            messages=[{"role": "user", "content": prompt}],
-            max_tokens=150
+        #response = client.chat.completions.create(
+            #model="gpt-4o-mini",  # gpt-3.5-turbo yerine daha iyi ve ucuz!
+            #messages=[{"role": "user", "content": prompt}],
+            #max_tokens=150
+        response = client.generate_content(prompt)
         )
-        return response.choices[0].message.content.strip()
+        #return response.choices[0].message.content.strip()
+        return response.text.strip()
     except Exception as e:
         print(f"⚠️ AI yorum hatası: {e}")
         return ""
@@ -131,12 +137,14 @@ def analyze_nihat_uk(content):
             f"yazılım test mühendisleri için 3-4 cümlelik Türkçe bir köşe yazısı oluştur:\n\n"
             f"{content}"
         )
-        response = client.chat.completions.create(
-            model="gpt-4o-mini",
-            messages=[{"role": "user", "content": prompt}],
-            max_tokens=250
+        #response = client.chat.completions.create(
+            #model="gpt-4o-mini",
+            #messages=[{"role": "user", "content": prompt}],
+            #max_tokens=250
+            response = client.generate_content(prompt)
         )
-        return response.choices[0].message.content.strip()
+        return response.text.strip()
+        #return response.choices[0].message.content.strip()
     except Exception as e:
         print(f"⚠️ Nihat yorumu hatası: {e}")
         return ""
