@@ -5,11 +5,8 @@ import os
 import re
 import time
 from datetime import datetime, timedelta
-#from openai import OpenAI
-
-#client = OpenAI(api_key=os.environ.get("OPENAI_API_KEY"))
-
 import google.generativeai as genai
+
 genai.configure(api_key=os.environ.get("GEMINI_API_KEY"))
 client = genai.GenerativeModel("gemini-1.5-flash")
 
@@ -34,7 +31,7 @@ def is_recent(entry, days=7):
         published = datetime(*entry.published_parsed[:6])
         return published > datetime.now() - timedelta(days=days)
     except:
-        return True  # Tarih yoksa dahil et
+        return True
 
 def clean_text(text, max_chars=300):
     """HTML taglarını temizle ve kısalt"""
@@ -75,7 +72,7 @@ def fetch_feeds():
                 })
                 count += 1
 
-                if count >= 5:  # Her kaynaktan max 5 haber
+                if count >= 5:
                     break
 
             print(f"   ✅ {count} haber bulundu")
@@ -115,13 +112,7 @@ def analyze_with_ai(item):
             f"Başlık: {item['title']}\n"
             f"Özet: {item['summary']}"
         )
-        (#response = client.chat.completions.create(
-            #model="gpt-4o-mini",  # gpt-3.5-turbo yerine daha iyi ve ucuz!
-            #messages=[{"role": "user", "content": prompt}],
-            #max_tokens=150
         response = client.generate_content(prompt)
-        )
-        #return response.choices[0].message.content.strip()
         return response.text.strip()
     except Exception as e:
         print(f"⚠️ AI yorum hatası: {e}")
@@ -137,14 +128,8 @@ def analyze_nihat_uk(content):
             f"yazılım test mühendisleri için 3-4 cümlelik Türkçe bir köşe yazısı oluştur:\n\n"
             f"{content}"
         )
-        (#response = client.chat.completions.create(
-            #model="gpt-4o-mini",
-            #messages=[{"role": "user", "content": prompt}],
-            #max_tokens=250
-            response = client.generate_content(prompt)
-        )
+        response = client.generate_content(prompt)
         return response.text.strip()
-        #return response.choices[0].message.content.strip()
     except Exception as e:
         print(f"⚠️ Nihat yorumu hatası: {e}")
         return ""
@@ -168,7 +153,6 @@ def save_bulletin_as_markdown(data):
         lines.append(data['nihat_yorum'] + "\n")
         lines.append("---\n")
 
-    # Haberleri kaynağa göre grupla
     sources = {}
     for item in data['items']:
         src = item['source']
@@ -202,25 +186,20 @@ def save_bulletin_as_markdown(data):
 def run():
     print("🚀 Bülten hazırlanıyor...")
 
-    # Haberleri çek
     items = fetch_feeds()
     print(f"\n✅ Toplam {len(items)} haber bulundu")
 
-    # Nihat Ük içeriğini çek
     nihat_content = fetch_nihat_uk()
 
-    # Her haberi AI ile analiz et
     print("\n🤖 AI yorumları yazılıyor...")
     for i, item in enumerate(items):
         print(f"   {i+1}/{len(items)}: {item['title'][:50]}...")
         item['ai_comment'] = analyze_with_ai(item)
-        time.sleep(1)  # Rate limit için bekle
+        time.sleep(1)
 
-    # Nihat Ük köşesini oluştur
     print("\n✍️ Nihat Ük'ün yorumu yazılıyor...")
     nihat_yorum = analyze_nihat_uk(nihat_content)
 
-    # JSON olarak kaydet
     data = {
         "fetched_at": datetime.now().isoformat(),
         "total": len(items),
@@ -234,7 +213,6 @@ def run():
 
     print("✅ JSON kaydedildi: data/weekly_news.json")
 
-    # Markdown bülten oluştur
     save_bulletin_as_markdown(data)
 
     print("\n🎉 Bülten hazır!")
