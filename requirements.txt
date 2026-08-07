@@ -1,4 +1,4 @@
-openai
+#openai
 requests
 feedparser
 pyyaml
