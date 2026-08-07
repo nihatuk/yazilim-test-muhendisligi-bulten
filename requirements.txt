@@ -1,5 +1,4 @@
-#openai
 requests
 feedparser
 pyyaml
-google-generativeai
+google-genai
