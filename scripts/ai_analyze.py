@@ -112,7 +112,7 @@ def analyze_with_ai(item):
             f"Özet: {item['summary']}"
         )
         response = client.models.generate_content(
-            model="gemini-2.0-flash",
+            model="gemini-1.5-flash",  # 2.0-flash yerine 1.5-flash
             contents=prompt
         )
         return response.text.strip()
@@ -131,7 +131,7 @@ def analyze_nihat_uk(content):
             f"{content}"
         )
         response = client.models.generate_content(
-            model="gemini-2.0-flash",
+            model="gemini-1.5-flash",  # 2.0-flash yerine 1.5-flash
             contents=prompt
         )
         return response.text.strip()
