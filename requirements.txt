@@ -2,3 +2,4 @@ openai
 requests
 feedparser
 pyyaml
+google-generativeai
