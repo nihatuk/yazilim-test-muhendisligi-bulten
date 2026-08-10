@@ -2,83 +2,131 @@ import feedparser
 import yaml
 import json
 import os
+import re
+import glob
 from datetime import datetime, timedelta
 
 def load_sources():
-    """sources.yaml dosyasını oku"""
     with open('sources.yaml', 'r', encoding='utf-8') as f:
         return yaml.safe_load(f)
 
 def is_recent(entry, days=7):
-    """Haberin son 7 günde olup olmadığını kontrol et"""
     try:
         published = datetime(*entry.published_parsed[:6])
         return published > datetime.now() - timedelta(days=days)
     except:
-        return True  # Tarih yoksa dahil et
+        return True
 
 def clean_text(text, max_chars=300):
-    """HTML taglarını temizle ve kısalt"""
-    import re
-    clean = re.sub(r'<[^>]+>', '', text)  # HTML temizle
+    clean = re.sub(r'<[^>]+>', '', text)
     clean = clean.replace('\n', ' ').strip()
     return clean[:max_chars] + "..." if len(clean) > max_chars else clean
 
+# ─────────────────────────────────────────
+# DUPLICATE KONTROL
+# ─────────────────────────────────────────
+
+def load_seen_links(data_dir="data", last_n_bulletins=2):
+    """Son N bültendeki linkleri yükle — bunlar tekrar eklenmez"""
+    seen = set()
+
+    json_files = sorted(
+        glob.glob(os.path.join(data_dir, "*.json")),
+        reverse=True
+    )[:last_n_bulletins]
+
+    for filepath in json_files:
+        try:
+            with open(filepath, 'r', encoding='utf-8') as f:
+                data = json.load(f)
+                for item in data.get('items', []):
+                    link = item.get('link', '').strip()
+                    if link:
+                        seen.add(link)
+            print(f"   📂 {os.path.basename(filepath)} → {len(seen)} link yüklendi")
+        except Exception as e:
+            print(f"   ⚠️ Dosya okunamadı {filepath}: {e}")
+
+    return seen
+
+# ─────────────────────────────────────────
+# HABER ÇEKME
+# ─────────────────────────────────────────
+
 def fetch_weekly_news():
-    """Tüm kaynaklardan haberleri topla"""
     sources = load_sources()
     news_items = []
-    
+
+    print("📂 Önceki bültenler kontrol ediliyor...")
+    seen_links = load_seen_links(last_n_bulletins=2)
+    print(f"   🔒 {len(seen_links)} link daha önce görülmüş\n")
+
     print("🔍 Haberler toplanıyor...\n")
-    
+
+    new_count = 0
+    skip_count = 0
+
     for feed_info in sources['rss_feeds']:
         print(f"📡 {feed_info['name']} okunuyor...")
-        
         try:
             feed = feedparser.parse(feed_info['url'])
             count = 0
-            
+
             for entry in feed.entries:
                 if not is_recent(entry):
                     continue
-                    
-                # Özet al (summary veya description)
+
+                link = entry.get('link', '').strip()
+
+                # ✅ Duplicate kontrolü
+                if link in seen_links:
+                    skip_count += 1
+                    continue
+
                 summary = ""
                 if hasattr(entry, 'summary'):
                     summary = clean_text(entry.summary)
                 elif hasattr(entry, 'description'):
                     summary = clean_text(entry.description)
-                
+
                 news_items.append({
                     'title': entry.get('title', 'Başlık yok'),
-                    'link': entry.get('link', ''),
+                    'link': link,
                     'summary': summary,
                     'source': feed_info['name'],
-                    'date': entry.get('published', datetime.now().isoformat())
+                    'lang': feed_info.get('lang', 'en'),
+                    'date': entry.get('published', datetime.now().isoformat()),
+                    'ai_comment': ""
                 })
+
+                # Bu çalışmada da tekrar eklenmemesi için
+                seen_links.add(link)
                 count += 1
-                
-                if count >= 5:  # Her kaynaktan max 5 haber
+                new_count += 1
+
+                if count >= 5:
                     break
-                    
-            print(f"   ✅ {count} haber bulundu")
-            
+
+            print(f"   ✅ {count} yeni haber")
+
         except Exception as e:
-            print(f"   ❌ Hata: {e}")
-    
-    # data/ klasörüne kaydet
+            print(f"   ❌ Hata ({feed_info['name']}): {e}")
+
+    print(f"\n📊 Sonuç: {new_count} yeni | {skip_count} tekrar atlandı")
+
+    if not news_items:
+        print("⚠️ Yeni haber bulunamadı!")
+
+    # Geçici JSON olarak kaydet (ai_analyze.py okuyacak)
     os.makedirs('data', exist_ok=True)
-    output_file = 'data/weekly_news.json'
-    
-    with open(output_file, 'w', encoding='utf-8') as f:
+    with open('data/weekly_news.json', 'w', encoding='utf-8') as f:
         json.dump({
             'fetched_at': datetime.now().isoformat(),
             'total': len(news_items),
             'items': news_items
         }, f, ensure_ascii=False, indent=2)
-    
-    print(f"\n✅ Toplam {len(news_items)} haber kaydedildi!")
-    print(f"📄 Dosya: {output_file}")
+
+    print(f"\n✅ {len(news_items)} haber kaydedildi → data/weekly_news.json")
     return news_items
 
 if __name__ == "__main__":
