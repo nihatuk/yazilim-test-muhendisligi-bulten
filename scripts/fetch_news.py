@@ -23,34 +23,58 @@ def clean_text(text, max_chars=300):
     return clean[:max_chars] + "..." if len(clean) > max_chars else clean
 
 # ─────────────────────────────────────────
-# DUPLICATE KONTROL
+# DUPLICATE KONTROL — .md dosyalarından
 # ─────────────────────────────────────────
 
-def load_seen_links(data_dir="data", last_n_bulletins=2):
-    """Son N bültendeki linkleri yükle — bunlar tekrar eklenmez"""
+def load_seen_links_from_md(data_dir="data"):
+    """
+    data/ klasöründeki .md dosyalarından
+    daha önce yayınlanmış linkleri çıkar.
+    """
     seen = set()
 
-    # ✅ weekly_news.json DIŞLANIR — sadece tarihli dosyalar kontrol edilir
+    md_files = sorted(
+        glob.glob(os.path.join(data_dir, "*.md")),
+        reverse=True
+    )
+
+    # URL pattern: markdown linkleri [title](url) veya düz url
+    url_pattern = re.compile(r'https?://[^\s\)\]"\'<>]+')
+
+    for filepath in md_files:
+        try:
+            with open(filepath, 'r', encoding='utf-8') as f:
+                content = f.read()
+            links = url_pattern.findall(content)
+            for link in links:
+                link = link.strip().rstrip(')')
+                seen.add(link)
+            print(f"   📂 {os.path.basename(filepath)} → {len(links)} link bulundu")
+        except Exception as e:
+            print(f"   ⚠️ Dosya okunamadı {filepath}: {e}")
+
+    # JSON dosyalarından da kontrol et (varsa)
     json_files = sorted(
         [
             f for f in glob.glob(os.path.join(data_dir, "*.json"))
             if os.path.basename(f) != "weekly_news.json"
         ],
         reverse=True
-    )[:last_n_bulletins]
+    )
 
     for filepath in json_files:
         try:
             with open(filepath, 'r', encoding='utf-8') as f:
                 data = json.load(f)
-                for item in data.get('items', []):
-                    link = item.get('link', '').strip()
-                    if link:
-                        seen.add(link)
-            print(f"   📂 {os.path.basename(filepath)} → {len(seen)} link yüklendi")
+            for item in data.get('items', []):
+                link = item.get('link', '').strip()
+                if link:
+                    seen.add(link)
+            print(f"   📂 {os.path.basename(filepath)} → JSON okundu")
         except Exception as e:
-            print(f"   ⚠️ Dosya okunamadı {filepath}: {e}")
+            print(f"   ⚠️ JSON okunamadı {filepath}: {e}")
 
+    print(f"   🔒 Toplam {len(seen)} link daha önce görülmüş")
     return seen
 
 # ─────────────────────────────────────────
@@ -62,8 +86,8 @@ def fetch_weekly_news():
     news_items = []
 
     print("📂 Önceki bültenler kontrol ediliyor...")
-    seen_links = load_seen_links(last_n_bulletins=2)
-    print(f"   🔒 {len(seen_links)} link daha önce görülmüş\n")
+    seen_links = load_seen_links_from_md()
+    print()
 
     print("🔍 Haberler toplanıyor...\n")
 
@@ -84,6 +108,7 @@ def fetch_weekly_news():
 
                 # ✅ Duplicate kontrolü
                 if link in seen_links:
+                    print(f"   ⏭️  Atlandı (eski): {entry.get('title','')[:60]}")
                     skip_count += 1
                     continue
 
@@ -103,7 +128,6 @@ def fetch_weekly_news():
                     'ai_comment': ""
                 })
 
-                # Bu çalışmada da tekrar eklenmemesi için
                 seen_links.add(link)
                 count += 1
                 new_count += 1
@@ -121,7 +145,6 @@ def fetch_weekly_news():
     if not news_items:
         print("⚠️ Yeni haber bulunamadı!")
 
-    # ✅ Sadece bu günün haberlerini yaz (eski haberler dahil edilmez)
     os.makedirs('data', exist_ok=True)
     with open('data/weekly_news.json', 'w', encoding='utf-8') as f:
         json.dump({
