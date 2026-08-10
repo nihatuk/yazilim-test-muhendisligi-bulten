@@ -28,6 +28,10 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
+      # ✅ YENİ ADIM — Feed debug
+      - name: 🔍 Feed Debug
+        run: python scripts/debug_feeds.py
+
       - name: 📡 Haberleri topla (duplicate kontrolü ile)
         run: python scripts/fetch_news.py
 
