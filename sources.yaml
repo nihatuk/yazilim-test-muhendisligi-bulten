@@ -1,8 +1,8 @@
 rss_feeds:
   # ─── Türkçe ───
-  - name: "Nihat Ük - Yazılım Test Mühendisliği"
-    url: "https://yazilimtestmuhendisligi.com/feed/"
-    lang: "tr"
+  #- name: "Nihat Ük - Yazılım Test Mühendisliği"
+  #  url: "https://yazilimtestmuhendisligi.com/feed/"
+  #  lang: "tr"
 
   # ─── İngilizce - Test Odaklı ───
   - name: "Ministry of Testing"
