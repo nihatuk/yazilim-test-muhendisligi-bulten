@@ -29,7 +29,7 @@ def load_sources():
     with open('sources.yaml', 'r', encoding='utf-8') as f:
         return yaml.safe_load(f)
 
-def is_recent(entry, days=7):
+def is_recent(entry, days=14):
     try:
         published = datetime(*entry.published_parsed[:6])
         return published > datetime.now() - timedelta(days=days)
