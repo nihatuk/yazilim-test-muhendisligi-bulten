@@ -30,8 +30,12 @@ def load_seen_links(data_dir="data", last_n_bulletins=2):
     """Son N bültendeki linkleri yükle — bunlar tekrar eklenmez"""
     seen = set()
 
+    # ✅ weekly_news.json DIŞLANIR — sadece tarihli dosyalar kontrol edilir
     json_files = sorted(
-        glob.glob(os.path.join(data_dir, "*.json")),
+        [
+            f for f in glob.glob(os.path.join(data_dir, "*.json"))
+            if os.path.basename(f) != "weekly_news.json"
+        ],
         reverse=True
     )[:last_n_bulletins]
 
@@ -117,7 +121,7 @@ def fetch_weekly_news():
     if not news_items:
         print("⚠️ Yeni haber bulunamadı!")
 
-    # Geçici JSON olarak kaydet (ai_analyze.py okuyacak)
+    # ✅ Sadece bu günün haberlerini yaz (eski haberler dahil edilmez)
     os.makedirs('data', exist_ok=True)
     with open('data/weekly_news.json', 'w', encoding='utf-8') as f:
         json.dump({
