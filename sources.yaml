@@ -49,14 +49,6 @@ rss_feeds:
     url: "https://medium.com/feed/tag/software-testing"
     lang: "en"
 
-  - name: "Hashnode - Testing"
-    url: "https://hashnode.com/n/testing/rss"
-    lang: "en"
-
   - name: "TestSigma Blog"
     url: "https://testsigma.com/blog/feed/"
-    lang: "en"
-
-  - name: "Reflect.run Blog"
-    url: "https://reflect.run/articles/rss.xml"
     lang: "en"
