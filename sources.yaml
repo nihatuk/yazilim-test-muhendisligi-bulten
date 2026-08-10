@@ -1,8 +1,5 @@
 rss_feeds:
-  # ─── Türkçe ───
-  # (kendi siten çıkarıldı)
-
-  # ─── Aktif - Test Odaklı ───
+  # ─── Aktif & Çalışan ───
   - name: "Test Guild"
     url: "https://testguild.com/feed/"
     lang: "en"
@@ -11,47 +8,55 @@ rss_feeds:
     url: "https://www.eviltester.com/index.xml"
     lang: "en"
 
-  # ─── YENİ EKLENENLER ───
-  - name: "Testing Curator"
-    url: "https://testingcurator.com/feed/"
-    lang: "en"
-
-  - name: "The QA Lead"
-    url: "https://theqalead.com/feed/"
-    lang: "en"
-
   - name: "Applitools Blog"
     url: "https://applitools.com/blog/feed/"
-    lang: "en"
-
-  - name: "Sauce Labs Blog"
-    url: "https://saucelabs.com/blog/feed/"
     lang: "en"
 
   - name: "BrowserStack Blog"
     url: "https://www.browserstack.com/blog/feed/"
     lang: "en"
 
+  - name: "Cypress Blog"
+    url: "https://www.cypress.io/blog/rss.xml"
+    lang: "en"
+
   - name: "Mabl Blog"
     url: "https://www.mabl.com/blog/rss.xml"
     lang: "en"
 
-  - name: "Tricentis Blog"
-    url: "https://www.tricentis.com/blog/feed/"
+  # ─── Yeni Eklenecekler ───
+  - name: "Google Testing Blog"
+    url: "https://testing.googleblog.com/feeds/posts/default"
     lang: "en"
 
-  - name: "TestProject Blog"
-    url: "https://blog.testproject.io/feed/"
+  - name: "Martin Fowler"
+    url: "https://martinfowler.com/feed.atom"
     lang: "en"
 
-  - name: "LambdaTest Blog"
-    url: "https://www.lambdatest.com/blog/feed/"
+  - name: "Dev.to - Testing"
+    url: "https://dev.to/feed/tag/testing"
     lang: "en"
 
-  - name: "Playwright Blog"
-    url: "https://playwright.dev/blog/rss.xml"
+  - name: "Dev.to - QA"
+    url: "https://dev.to/feed/tag/qa"
     lang: "en"
 
-  - name: "Cypress Blog"
-    url: "https://www.cypress.io/blog/rss.xml"
+  - name: "Dev.to - Playwright"
+    url: "https://dev.to/feed/tag/playwright"
+    lang: "en"
+
+  - name: "Medium - Software Testing"
+    url: "https://medium.com/feed/tag/software-testing"
+    lang: "en"
+
+  - name: "Hashnode - Testing"
+    url: "https://hashnode.com/n/testing/rss"
+    lang: "en"
+
+  - name: "TestSigma Blog"
+    url: "https://testsigma.com/blog/feed/"
+    lang: "en"
+
+  - name: "Reflect.run Blog"
+    url: "https://reflect.run/articles/rss.xml"
     lang: "en"
