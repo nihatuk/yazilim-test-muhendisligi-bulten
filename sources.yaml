@@ -1,23 +1,42 @@
 rss_feeds:
+  # ─── Türkçe ───
+  - name: "Nihat Ük - Yazılım Test Mühendisliği"
+    url: "https://yazilimtestmuhendisligi.com/feed/"
+    lang: "tr"
+
+  # ─── İngilizce - Test Odaklı ───
   - name: "Ministry of Testing"
     url: "https://www.ministryoftesting.com/feed"
-
-  - name: "Google Testing Blog"
-    url: "https://testing.googleblog.com/feeds/posts/default"
+    lang: "en"
 
   - name: "Test Guild"
     url: "https://testguild.com/feed/"
+    lang: "en"
 
   - name: "Automation Panda"
     url: "https://automationpanda.com/feed/"
+    lang: "en"
 
-  - name: "Software Testing Help"
-    url: "https://www.softwaretestinghelp.com/feed/"
+  - name: "StickyMinds"
+    url: "https://www.stickyminds.com/rss.xml"
+    lang: "en"
 
-keywords:
-  - "software testing"
-  - "test automation"
-  - "QA tools"
-  - "Selenium"
-  - "Cypress"
-  - "Playwright"
+  - name: "TechBeacon - Testing"
+    url: "https://techbeacon.com/rss/all"
+    lang: "en"
+
+  - name: "Software Testing Weekly"
+    url: "https://softwaretestingweekly.com/feed"
+    lang: "en"
+
+  - name: "Evil Tester"
+    url: "https://www.eviltester.com/index.xml"
+    lang: "en"
+
+  - name: "Awesome Testing"
+    url: "https://www.awesome-testing.com/feeds/posts/default"
+    lang: "en"
+
+  - name: "QA Intelligence"
+    url: "https://qaintelligence.com/feed/"
+    lang: "en"
