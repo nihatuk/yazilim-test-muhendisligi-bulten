@@ -24,7 +24,6 @@ rss_feeds:
     url: "https://www.mabl.com/blog/rss.xml"
     lang: "en"
 
-  # ─── Yeni Eklenecekler ───
   - name: "Google Testing Blog"
     url: "https://testing.googleblog.com/feeds/posts/default"
     lang: "en"
