@@ -6,6 +6,25 @@ import re
 import glob
 from datetime import datetime, timedelta
 
+# ─────────────────────────────────────────
+# KENDİ SİTE FİLTRESİ
+# ─────────────────────────────────────────
+
+OWN_SITE_DOMAINS = [
+    "yazilimtestmuhendisligi.com",
+    "nihatuk.com"
+]
+
+def is_own_site(link: str) -> bool:
+    for domain in OWN_SITE_DOMAINS:
+        if domain in link:
+            return True
+    return False
+
+# ─────────────────────────────────────────
+# YARDIMCI FONKSİYONLAR
+# ─────────────────────────────────────────
+
 def load_sources():
     with open('sources.yaml', 'r', encoding='utf-8') as f:
         return yaml.safe_load(f)
@@ -23,23 +42,17 @@ def clean_text(text, max_chars=300):
     return clean[:max_chars] + "..." if len(clean) > max_chars else clean
 
 # ─────────────────────────────────────────
-# DUPLICATE KONTROL — .md dosyalarından
+# DUPLICATE KONTROL — .md + .json
 # ─────────────────────────────────────────
 
 def load_seen_links_from_md(data_dir="data"):
-    """
-    data/ klasöründeki .md dosyalarından
-    daha önce yayınlanmış linkleri çıkar.
-    """
     seen = set()
+    url_pattern = re.compile(r'https?://[^\s\)\]"\'<>]+')
 
     md_files = sorted(
         glob.glob(os.path.join(data_dir, "*.md")),
         reverse=True
     )
-
-    # URL pattern: markdown linkleri [title](url) veya düz url
-    url_pattern = re.compile(r'https?://[^\s\)\]"\'<>]+')
 
     for filepath in md_files:
         try:
@@ -48,12 +61,13 @@ def load_seen_links_from_md(data_dir="data"):
             links = url_pattern.findall(content)
             for link in links:
                 link = link.strip().rstrip(')')
-                seen.add(link)
-            print(f"   📂 {os.path.basename(filepath)} → {len(links)} link bulundu")
+                # Kendi site linklerini seen'e ekleme — zaten filtreli
+                if not is_own_site(link):
+                    seen.add(link)
+            print(f"   📂 {os.path.basename(filepath)} → {len(links)} link")
         except Exception as e:
-            print(f"   ⚠️ Dosya okunamadı {filepath}: {e}")
+            print(f"   ⚠️ Okunamadı {filepath}: {e}")
 
-    # JSON dosyalarından da kontrol et (varsa)
     json_files = sorted(
         [
             f for f in glob.glob(os.path.join(data_dir, "*.json"))
@@ -68,7 +82,7 @@ def load_seen_links_from_md(data_dir="data"):
                 data = json.load(f)
             for item in data.get('items', []):
                 link = item.get('link', '').strip()
-                if link:
+                if link and not is_own_site(link):
                     seen.add(link)
             print(f"   📂 {os.path.basename(filepath)} → JSON okundu")
         except Exception as e:
@@ -106,9 +120,15 @@ def fetch_weekly_news():
 
                 link = entry.get('link', '').strip()
 
-                # ✅ Duplicate kontrolü
+                # ✅ Kendi sitesinden gelen haberleri atla
+                if is_own_site(link):
+                    print(f"   🚫 Kendi site: {entry.get('title','')[:60]}")
+                    skip_count += 1
+                    continue
+
+                # ✅ Daha önce yayınlanmış mı?
                 if link in seen_links:
-                    print(f"   ⏭️  Atlandı (eski): {entry.get('title','')[:60]}")
+                    print(f"   ⏭️  Eski haber: {entry.get('title','')[:60]}")
                     skip_count += 1
                     continue
 
@@ -140,7 +160,7 @@ def fetch_weekly_news():
         except Exception as e:
             print(f"   ❌ Hata ({feed_info['name']}): {e}")
 
-    print(f"\n📊 Sonuç: {new_count} yeni | {skip_count} tekrar atlandı")
+    print(f"\n📊 Sonuç: {new_count} yeni | {skip_count} tekrar/kendi site atlandı")
 
     if not news_items:
         print("⚠️ Yeni haber bulunamadı!")
