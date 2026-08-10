@@ -28,9 +28,11 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
-      - name: 📡 Haberleri topla ve analiz et
+      - name: 📡 Haberleri topla (duplicate kontrolü ile)
+        run: python scripts/fetch_news.py
+
+      - name: 🤖 AI ile analiz et
         env:
-          #OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
         run: python scripts/ai_analyze.py
 
