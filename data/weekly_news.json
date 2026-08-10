@@ -1,32 +1,41 @@
 {
-  "fetched_at": "2026-08-10T08:38:44.310270",
-  "total": 3,
+  "fetched_at": "2026-08-10T08:45:15.873726",
+  "total": 4,
   "items": [
     {
       "title": "Yazılım Test Mühendisliği Bülteni – 10 August 2026",
-      "link": "https://yazilimtestmuhendisligi.com/bulten-2026-08-10/",
-      "summary": "2026-08-10 Toplam 3 haber derlendi. Nihat Ük &#8211; Yazılım Test Mühendisliği Yazılım Test Mühendisliği Bülteni – 09 August 2026 2026-08-09 Toplam 2 haber derlendi. Test Guild What Is AI-DLC? The AI Delivery Lifecycle for Governed Software Delivery A Director of Sales hit me with &#8220;AI-DLC&#822...",
+      "link": "https://yazilimtestmuhendisligi.com/bulten-2026-08-10-2/",
+      "summary": "2026-08-10 Toplam 3 haber derlendi. Nihat Ük &#8211; Yazılım Test Mühendisliği Yazılım Test Mühendisliği Bülteni – 10 August 2026 2026-08-10 Toplam 3 haber derlendi. Nihat Ük &#8211; Yazılım Test Mühendisliği Yazılım Test Mühendisliği Bülteni – 09 August 2026 2026-08-09 Toplam 2 haber derlendi. Test...",
       "source": "Nihat Ük - Yazılım Test Mühendisliği",
       "lang": "tr",
-      "date": "Mon, 10 Aug 2026 08:30:48 +0000",
+      "date": "Mon, 10 Aug 2026 08:38:51 +0000",
       "ai_comment": ""
     },
     {
-      "title": "What Is AI-DLC? The AI Delivery Lifecycle for Governed Software Delivery",
-      "link": "https://testguild.com/what-is-ai-dlc/",
-      "summary": "A Director of Sales hit me with &#8220;AI-DLC&#8221; last week like I should already know it. I nodded. Then I [&hellip;]",
-      "source": "Test Guild",
-      "lang": "en",
-      "date": "Thu, 06 Aug 2026 08:00:05 GMT",
+      "title": "Yazılım Test Mühendisliği Bülteni – 09 August 2026",
+      "link": "https://yazilimtestmuhendisligi.com/bulten-2026-08-09/",
+      "summary": "2026-08-09 Toplam 2 haber derlendi. Test Guild What Is AI-DLC? The AI Delivery Lifecycle for Governed Software Delivery A Director of Sales hit me with &#8220;AI-DLC&#8221; last week like I should already know it. I nodded. Then I [&#8230;] Playwright With AI: How to Automate Tests Without Shipping ...",
+      "source": "Nihat Ük - Yazılım Test Mühendisliği",
+      "lang": "tr",
+      "date": "Sun, 09 Aug 2026 06:58:45 +0000",
       "ai_comment": ""
     },
     {
-      "title": "Playwright With AI: How to Automate Tests Without Shipping AI Slop with Andrew Knight",
-      "link": "https://testguild.com/podcast/a599-andrew/",
-      "summary": "About This Episode: Your developers just got supercharged by AI coding agents. Your test coverage did not. So how do [&hellip;]",
-      "source": "Test Guild",
+      "title": "Yazılım Test Mühendisliği Bülteni – 07 August 2026",
+      "link": "https://yazilimtestmuhendisligi.com/bulten-2026-08-07/",
+      "summary": "2026-08-07 Toplam 2 haber derlendi. Test Guild What Is AI-DLC? The AI Delivery Lifecycle for Governed Software Delivery A Director of Sales hit me with &#8220;AI-DLC&#8221; last week like I should already know it. I nodded. Then I [&#8230;] Playwright With AI: How to Automate Tests Without Shipping ...",
+      "source": "Nihat Ük - Yazılım Test Mühendisliği",
+      "lang": "tr",
+      "date": "Fri, 07 Aug 2026 16:27:14 +0000",
+      "ai_comment": ""
+    },
+    {
+      "title": "A Trail of Code - Boomstash",
+      "link": "https://www.eviltester.com/blog/eviltester/trailofcode/boomstash-initial-architecture/",
+      "summary": "TLDR; When we use AI we don&rsquo;t need to be as precious about architecture decisions as we used to. The principles we implement are important, the technology, less so, provided we have thought about exit strategies. I wrote BoomStash.com as a spin off project from an internal tool I created to he...",
+      "source": "Evil Tester",
       "lang": "en",
-      "date": "Tue, 04 Aug 2026 14:13:27 GMT",
+      "date": "Mon, 03 Aug 2026 12:00:00 UTC",
       "ai_comment": ""
     }
   ],
