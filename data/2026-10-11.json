@@ -1,0 +1,313 @@
+{
+  "fetched_at": "2026-10-11T12:18:19.966334",
+  "total": 34,
+  "items": [
+    {
+      "title": "Locust and Azure Load Testing: Create and Debug Load Tests with AI with Lars Holmberg and Abhinav Premsekhar",
+      "link": "https://testguild.com/podcast/a607-lars/",
+      "summary": "About This Episode: Performance testing has never been easier to start, or more important to get right. As teams ship [&hellip;]",
+      "source": "Test Guild",
+      "lang": "en",
+      "date": "Tue, 06 Oct 2026 15:15:50 GMT",
+      "ai_comment": ""
+    },
+    {
+      "title": "WebdriverIO, AI Agents, and 7 Questions to Ask Before Trusting AI Testing TGNS197",
+      "link": "https://testguild.com/podcast/n197-oct05/",
+      "summary": "About This Episode: Faster AI test runs or cheaper ones, which one should you actually pick? Is your WebdriverIO suite [&hellip;]",
+      "source": "Test Guild",
+      "lang": "en",
+      "date": "Mon, 05 Oct 2026 19:23:37 GMT",
+      "ai_comment": ""
+    },
+    {
+      "title": "The Anatomy of Customer Success: How Live Signals Become Real Outcomes",
+      "link": "https://app14743.cloudwayssites.com/blog/data-driven-customer-success-signals/",
+      "summary": "Customer Success works best when it behaves like a living body. Live data flows in through a nervous system of connected sources, and our capabilities act as the brain that turns signals into decisions, experiences, and growth. Explore the anatomy of Customer Success at Applitools, and why the data-...",
+      "source": "Applitools Blog",
+      "lang": "en",
+      "date": "Mon, 05 Oct 2026 14:04:23 +0000",
+      "ai_comment": ""
+    },
+    {
+      "title": "Let Agents Review Your Visual Test Failures in GitHub Actions",
+      "link": "https://app14743.cloudwayssites.com/blog/automate-visual-testing-ci-pipeline/",
+      "summary": "Visual test screenshots often create massive PR review bottlenecks—especially as AI tools generate UI changes faster than engineering teams can review them. Discover how to automate visual diff inspection, triage, and resolution directly inside your CI pipeline using AI agents, keeping your builds f...",
+      "source": "Applitools Blog",
+      "lang": "en",
+      "date": "Wed, 30 Sep 2026 12:17:35 +0000",
+      "ai_comment": ""
+    },
+    {
+      "title": "Solving for better issue triage and prioritization with the unified Table View",
+      "link": "https://www.browserstack.com/blog/solving-for-better-issue-triage-and-prioritization-with-the-unified-table-view/",
+      "summary": "Automated scans flood teams with thousands of duplicate accessibility violations. Our overhauled Table View eliminates triage fatigue with component-level aggregation, unified workflows, and inline confidence scores. Stop managing issue bloat and start fixing accessibility violations faster.",
+      "source": "BrowserStack Blog",
+      "lang": "en",
+      "date": "Wed, 07 Oct 2026 09:50:29 GMT",
+      "ai_comment": ""
+    },
+    {
+      "title": "Cypress Ambassador Spotlight: Darpan Shah",
+      "link": "https://www.cypress.io/blog/cypress-ambassador-spotlight-darpan-shah/",
+      "summary": "Welcome back to another Ambassador Spotlight! Each post in this series pulls back the curtain on the testers and builders driving the Cypress community forward, sharing how they got here, what keeps them going, and the lessons they've picked up along the way. Curious about the program itself? Learn ...",
+      "source": "Cypress Blog",
+      "lang": "en",
+      "date": "Thu, 08 Oct 2026 15:10:45 GMT",
+      "ai_comment": ""
+    },
+    {
+      "title": "Send Cypress Accessibility and UI Coverage results anywhere with webhooks",
+      "link": "https://www.cypress.io/blog/send-cypress-accessibility-and-ui-coverage-results-anywhere-with-webhooks/",
+      "summary": "Your Accessibility and UI Coverage reports already tell you a lot. The harder part is getting that information in front of the right people at the right time.  Starting today, Cypress Cloud webhooks can send two new events when a report finishes processing:   * run.accessibility.completed for Cypres...",
+      "source": "Cypress Blog",
+      "lang": "en",
+      "date": "Wed, 07 Oct 2026 16:22:03 GMT",
+      "ai_comment": ""
+    },
+    {
+      "title": "Continuous Compliance for Software Testing and AI Agents | mabl",
+      "link": "https://www.mabl.com/blog/continuous-compliance-software-testing",
+      "summary": "Key Takeaways     Regulators don't audit your tests; they audit your evidence, looking for who changed what, when it happened, how it was verified, and who approved it.   Compliance isn't earned during an audit; it is a validated state you must maintain through every single release, patch, and confi...",
+      "source": "Mabl Blog",
+      "lang": "en",
+      "date": "Thu, 08 Oct 2026 20:08:19 GMT",
+      "ai_comment": ""
+    },
+    {
+      "title": "5 Agentic AI Software Testing Tools for End-to-End Quality | mabl",
+      "link": "https://www.mabl.com/blog/agentic-ai-software-testing",
+      "summary": "Key Takeaways     Agentic AI software testing should support planning, execution, analysis, maintenance, and governance across the testing lifecycle.   End-to-end quality depends on inner-loop speed and outer-loop verification, especially as AI-assisted development increases output.   Playwright is ...",
+      "source": "Mabl Blog",
+      "lang": "en",
+      "date": "Tue, 06 Oct 2026 19:37:12 GMT",
+      "ai_comment": ""
+    },
+    {
+      "title": "Fixing the Verification Gap in the AI-Native SDLC | mabl",
+      "link": "https://www.mabl.com/blog/fixing-the-verification-gap-in-the-adlc",
+      "summary": "Anthropic published its AI-Native SDLC playbook in August, a blueprint for building software when coding agents write most of the code. It opens with a line I agree with: code is no longer the bottleneck.  The playbook structures the software development lifecycle (SDLC) as a loop of six stages: pla...",
+      "source": "Mabl Blog",
+      "lang": "en",
+      "date": "Mon, 05 Oct 2026 18:17:36 GMT",
+      "ai_comment": ""
+    },
+    {
+      "title": "Two-Way Doors: Don’t Code Yourself into a Corner",
+      "link": "http://testing.googleblog.com/2026/10/two-way-doors-dont-code-yourself-into.html",
+      "summary": "This article was adapted from a Google Tech on the Toilet (TotT) episode. You can download a printer-friendly version of this TotT episode and post it in your office.By Nimit Khandelwal and Chris KennellyOn large software projects, even seemingly trivial choices can set assumptions that the codebase...",
+      "source": "Google Testing Blog",
+      "lang": "en",
+      "date": "2026-10-05T05:47:12.909-07:00",
+      "ai_comment": ""
+    },
+    {
+      "title": "Fragments: October  4",
+      "link": "https://martinfowler.com/fragments/2026-10-04.html",
+      "summary": "In response to my last fragments (probably the bit about us worrying if LLMs have consciousness when we when we should be wondering why they don’t have a conscience) “Metalanguage” replied:     we shipped the id and forgot the superego. classic software lifecycle.   I don’t know what was on their mi...",
+      "source": "Martin Fowler",
+      "lang": "en",
+      "date": "2026-10-11T12:17:32.447883",
+      "ai_comment": ""
+    },
+    {
+      "title": "Your AI Wrote Tests With 100% Coverage. They Catch 4% of Real Bugs.",
+      "link": "https://dev.to/nikolay_chernev_a67479931/your-ai-wrote-tests-with-100-coverage-they-catch-4-of-real-bugs-182i",
+      "summary": "That's not a hypothetical split — it's a documented test suite: 100% line coverage, 4% mutation score. Every line executed. 96% of seeded bugs slipped through anyway. Source.  Coverage tells you which lines ran. It says nothing about whether the test would notice if the logic were wrong. That gap is...",
+      "source": "Dev.to - Testing",
+      "lang": "en",
+      "date": "Sun, 11 Oct 2026 12:01:37 +0000",
+      "ai_comment": ""
+    },
+    {
+      "title": "Green Tests, Lying Agent",
+      "link": "https://dev.to/artemmatviychuk/green-tests-lying-agent-4pkd",
+      "summary": "Originally published on Medium.  Seventh in a series on building an autonomous AI organism that operates real infrastructure under a constitutional safety model. Part 1 introduced two gates, Part 2 the wall, Part 3 the layers, Part 4 the governor, Part 5 the memory, and Part 6 the whole anatomy. Thi...",
+      "source": "Dev.to - Testing",
+      "lang": "en",
+      "date": "Sun, 11 Oct 2026 11:55:57 +0000",
+      "ai_comment": ""
+    },
+    {
+      "title": "Equal scores should not make a dashboard shuffle: deterministic ranking in JavaScript",
+      "link": "https://dev.to/agprolabs/equal-scores-should-not-make-a-dashboard-shuffle-deterministic-ranking-in-javascript-4ijh",
+      "summary": "A ranked dashboard can move rows even when their scores have not changed. The cause can be as ordinary as a different network response order.  For example, two instruments both score 72. A score-only comparator treats them as equal. If their input order changes on the next refresh, their displayed o...",
+      "source": "Dev.to - Testing",
+      "lang": "en",
+      "date": "Sun, 11 Oct 2026 11:42:15 +0000",
+      "ai_comment": ""
+    },
+    {
+      "title": "My form wrote a sentence that wasn't true, and the user would have signed it",
+      "link": "https://dev.to/azeem_ullah/my-form-wrote-a-sentence-that-wasnt-true-and-the-user-would-have-signed-it-3a6b",
+      "summary": "I built a small page that writes appeal letters for UK private parking tickets. You answer a few questions, it produces a letter.  I tested it the way I test most forms. Fill in good data, check the output looks right. Every combination passed: three parts of the UK, keeper or driver, five grounds. ...",
+      "source": "Dev.to - Testing",
+      "lang": "en",
+      "date": "Sun, 11 Oct 2026 11:28:55 +0000",
+      "ai_comment": ""
+    },
+    {
+      "title": "I tested two agent rules before shipping them. One was needed, one was not.",
+      "link": "https://dev.to/ginotrinh/i-tested-two-agent-rules-before-shipping-them-one-was-needed-one-was-not-1pf3",
+      "summary": "Most rule files for coding agents are written the same way: something goes wrong, you add a sentence telling the agent not to do it again, and the file grows. Nobody checks whether the sentence changes anything. Before releasing agos, I ran a small test on two of its rules to see which ones actually...",
+      "source": "Dev.to - Testing",
+      "lang": "en",
+      "date": "Sun, 11 Oct 2026 11:26:06 +0000",
+      "ai_comment": ""
+    },
+    {
+      "title": "Playwright Email Tests Need a Message Claim",
+      "link": "https://dev.to/silviutech/playwright-email-tests-need-a-message-claim-89n",
+      "summary": "Email verification tests often fail for a reason that looks like timing, but is really identity. The test receives a message, finds a token, and assumes that token belongs to the current run. A busy CI inbox can quietly disprove that assumption.  This article describes a small pattern I use in Playw...",
+      "source": "Dev.to - QA",
+      "lang": "en",
+      "date": "Sun, 11 Oct 2026 08:22:58 +0000",
+      "ai_comment": ""
+    },
+    {
+      "title": "Is Testim Still Worth the Price in 2026?",
+      "link": "https://dev.to/sleepyfalcon247/is-testim-still-worth-the-price-in-2026-4ijj",
+      "summary": "A test automation tool can be excellent when you buy it and still be the wrong tool three years later.  That sounds obvious until you're the person responsible for replacing one.  You have hundreds of tests, CI jobs built around the vendor, people who know the editor, and a release pipeline that mos...",
+      "source": "Dev.to - QA",
+      "lang": "en",
+      "date": "Sat, 10 Oct 2026 22:03:58 +0000",
+      "ai_comment": ""
+    },
+    {
+      "title": "Looking for a Cheaper mabl Alternative? Here's What I'd Compare Before Renewing",
+      "link": "https://dev.to/randomsquirrel802/looking-for-a-cheaper-mabl-alternative-heres-what-id-compare-before-renewing-3f3h",
+      "summary": "I have a fairly uncontroversial opinion that still seems to annoy people in software procurement: a good product can be a bad purchase.  That's where I put mabl for a particular kind of team.  It's a legitimate test automation platform. Its browser recorder is approachable, its automatic healing can...",
+      "source": "Dev.to - QA",
+      "lang": "en",
+      "date": "Sat, 10 Oct 2026 21:24:04 +0000",
+      "ai_comment": ""
+    },
+    {
+      "title": "We're building automated website QA checks and reinventing the wheel — what are the established methods?",
+      "link": "https://dev.to/chickenroadproductions/were-building-automated-website-qa-checks-and-reinventing-the-wheel-what-are-the-established-104n",
+      "summary": "I’ll be honest: we’re building our own automated QA system for checking website pages (structure, styling, visual consistency) and I suspect we’re reinventing the wheel badly. Our current wheel is square, not round. I’m looking for the established methods and standards we should be using instead.   ...",
+      "source": "Dev.to - QA",
+      "lang": "en",
+      "date": "Sat, 10 Oct 2026 17:20:25 +0000",
+      "ai_comment": ""
+    },
+    {
+      "title": "Severity is not priority: a practical guide for people who file bugs",
+      "link": "https://dev.to/bugitbytaskivator/severity-is-not-priority-a-practical-guide-for-people-who-file-bugs-1h55",
+      "summary": "Most trackers have two fields that look like they mean the same thing: severity and priority. Teams that treat them as one end up arguing in triage about words instead of bugs. Teams that keep them apart move faster, because each field answers a different question and is owned by a different person....",
+      "source": "Dev.to - QA",
+      "lang": "en",
+      "date": "Sat, 10 Oct 2026 09:52:26 +0000",
+      "ai_comment": ""
+    },
+    {
+      "title": "How to Automate Email Verification & OTP Workflows in Playwright and Pytest",
+      "link": "https://dev.to/whoisalfaz/how-to-automate-email-verification-otp-workflows-in-playwright-and-pytest-m5p",
+      "summary": "How to Automate Email Verification &amp; OTP Workflows in Playwright and Pytest   End-to-end testing for authentication flows often fails at a single choke point: email delivery.  Whether verifying user signups, testing password resets, or checking multi-factor one-time passwords (OTP), relying on r...",
+      "source": "Dev.to - Playwright",
+      "lang": "en",
+      "date": "Sun, 11 Oct 2026 07:10:51 +0000",
+      "ai_comment": ""
+    },
+    {
+      "title": "How to Make Playwright Autonomous (Without Letting an AI Agent Run Wild)",
+      "link": "https://dev.to/orbitpickle307/how-to-make-playwright-autonomous-without-letting-an-ai-agent-run-wild-3ck4",
+      "summary": "Playwright is very good at following instructions.  Tell it to click a button, it clicks the button. Tell it to fill an input, it fills the input. Give it a test with 40 steps and, assuming the page behaves, it'll run all 40.  The problem is that someone has to write those steps.  What if you gave P...",
+      "source": "Dev.to - Playwright",
+      "lang": "en",
+      "date": "Sat, 10 Oct 2026 21:14:46 +0000",
+      "ai_comment": ""
+    },
+    {
+      "title": "Why the LLM in my automation agent never clicks anything",
+      "link": "https://dev.to/lucasdantas2701/why-the-llm-in-my-automation-agent-never-clicks-anything-2edm",
+      "summary": "I'm a computer engineering student in Manaus, Brazil, and for my research project I've been building ANCHOR, a web automation agent: you describe a task in plain language (\"Register Maria Silva, IT department, contractor, accept the terms and save\"), and it runs the task in the browser. Everything r...",
+      "source": "Dev.to - Playwright",
+      "lang": "en",
+      "date": "Sat, 10 Oct 2026 17:16:55 +0000",
+      "ai_comment": ""
+    },
+    {
+      "title": "图像自动化不是一个“生成按钮”：把订单内容、版式与确认状态拆开",
+      "link": "https://dev.to/uion_797f6401f2faac4b9084/tu-xiang-zi-dong-hua-bu-shi-ge-sheng-cheng-an-niu-ba-ding-dan-nei-rong-ban-shi-yu-que-ren-zhuang-tai-chai-kai-1jbi",
+      "summary": "做定制商品图稿时，一张最终图片通常同时承担了太多信息：买家传了什么照片、这笔订单选了什么内容、商品用哪套版式、团队是否已经确认可以进入生产。  当它只是一张文件时，任何一处需要修改都会把人带回聊天记录、文件夹和表格里重新找答案。  这里从 XERP 面向 Amazon Custom 定制订单的处理方式，讨论一个更工程化的问题：原始内容、商品设计方案和生成结果为什么应该是三类不同的对象。 这是项目方的技术工作流分享，不是客户案例或性能测评。    图 1：账户分别授权、订单集中处理。公开门户说明和独立演示，不包含客户订单。           订单内容回答“这一次发生了什么”   买家照片、名字...",
+      "source": "Dev.to - Playwright",
+      "lang": "en",
+      "date": "Sat, 10 Oct 2026 10:19:29 +0000",
+      "ai_comment": ""
+    },
+    {
+      "title": "Playwright Automation Testing: A Beginner’s Guide",
+      "link": "https://dev.to/jennijuli3/playwright-automation-testing-a-beginners-guide-1632",
+      "summary": "Playwright Automation Testing: A Beginner’s Guide   Software testing plays an important role in delivering reliable and high-quality applications. As web applications become more complex, testing them manually can take a lot of time and effort. This is where automation testing tools like Playwright ...",
+      "source": "Dev.to - Playwright",
+      "lang": "en",
+      "date": "Sat, 10 Oct 2026 10:10:58 +0000",
+      "ai_comment": ""
+    },
+    {
+      "title": "My AI Agent Sandbox Reported Success. It Had Never Even Started.",
+      "link": "https://orbytlabs.medium.com/my-ai-agent-sandbox-reported-success-it-had-never-even-started-8fe77cbf14f8?source=rss------software_testing-5",
+      "summary": "A sandbox run came back green. The permission log listed zero denials.Continue reading on Medium »",
+      "source": "Medium - Software Testing",
+      "lang": "en",
+      "date": "Sun, 11 Oct 2026 12:02:05 GMT",
+      "ai_comment": ""
+    },
+    {
+      "title": "From Zero to a Reproducible AI Testing Part I",
+      "link": "https://medium.com/@prasetyoputra/from-zero-to-a-reproducible-ai-testing-part-i-245f912f1410?source=rss------software_testing-5",
+      "summary": "In QA, I&#x2019;m used to tests with predictable outcomes. A checkout either applies the discount or it doesn&#x2019;t. An API either returns the&#x2026;Continue reading on Medium »",
+      "source": "Medium - Software Testing",
+      "lang": "en",
+      "date": "Sun, 11 Oct 2026 11:59:00 GMT",
+      "ai_comment": ""
+    },
+    {
+      "title": "Playwright Tutorial | Alerts, Popups, iFrames, File Upload & Download",
+      "link": "https://medium.com/@aeshamangukiya1/playwright-tutorial-alerts-popups-iframes-file-upload-download-f028fb27799d?source=rss------software_testing-5",
+      "summary": "Preview Subtitle: Playwright Automation Tutorial for QA Engineers | Learn Alerts, JavaScript Dialogs, New Tabs, iFrames, File Uploads&#x2026;Continue reading on Medium »",
+      "source": "Medium - Software Testing",
+      "lang": "en",
+      "date": "Sun, 11 Oct 2026 10:55:06 GMT",
+      "ai_comment": ""
+    },
+    {
+      "title": "Your 90% Automation Coverage Might Mean Nothing",
+      "link": "https://medium.com/@ronit.joardar/your-90-automation-coverage-might-mean-nothing-3f480e3c02e0?source=rss------software_testing-5",
+      "summary": "We celebrate automated test percentages, but the number that matters most is whether our tests can detect the defects that actually matter.Continue reading on Medium »",
+      "source": "Medium - Software Testing",
+      "lang": "en",
+      "date": "Sun, 11 Oct 2026 09:39:41 GMT",
+      "ai_comment": ""
+    },
+    {
+      "title": "The Back Button Shouldn’t Erase 20 Minutes of User Effort : —",
+      "link": "https://medium.com/@ArpitChoubey9/the-back-button-shouldnt-erase-20-minutes-of-user-effort-c032ab121cd6?source=rss------software_testing-5",
+      "summary": "One click. Twenty fields. Zero data.Continue reading on Medium »",
+      "source": "Medium - Software Testing",
+      "lang": "en",
+      "date": "Sun, 11 Oct 2026 07:57:40 GMT",
+      "ai_comment": ""
+    },
+    {
+      "title": "Katalon Overview: Features, Pricing, Setup, and Practical Use Cases",
+      "link": "https://testsigma.com/blog/katalon-overview/",
+      "summary": "Katalon is a software quality platform that enables teams to automate web, mobile, API, and desktop application testing in one environment. Testsigma easily automates end-to-end tests in browsers &#38; mobile apps. Start Testing for Free Get a Demo Overview What is Katalon? An integrated test automa...",
+      "source": "TestSigma Blog",
+      "lang": "en",
+      "date": "Fri, 09 Oct 2026 05:54:30 +0000",
+      "ai_comment": ""
+    },
+    {
+      "title": "What Is Appium? Overview, Architecture & How It Works",
+      "link": "https://testsigma.com/blog/what-is-appium-overview/",
+      "summary": "Appium is an open source testing framework for native, hybrid and mobile web apps on iOS and Android platforms. With Testsigma you get the same cross-platform coverage with no-code, AI self-healing and automated execution. Start Testing for Free Get a Demo Overview What is Appium? A free, open-sourc...",
+      "source": "TestSigma Blog",
+      "lang": "en",
+      "date": "Mon, 05 Oct 2026 11:39:45 +0000",
+      "ai_comment": ""
+    }
+  ],
+  "nihat_yorum": ""
+}
