@@ -1,0 +1,277 @@
+{
+  "fetched_at": "2026-11-01T12:49:56.971159",
+  "total": 30,
+  "items": [
+    {
+      "title": "Why Your AI Tests Pass When Your Features Fail with Donovan Brady",
+      "link": "https://testguild.com/podcast/a609-donovan/",
+      "summary": "About This Episode: Why Your AI Tests Pass When Your Features Fail? Donovan Brady of Leapwork shows how to make [&hellip;]",
+      "source": "Test Guild",
+      "lang": "en",
+      "date": "Tue, 27 Oct 2026 14:34:17 GMT",
+      "ai_comment": ""
+    },
+    {
+      "title": "VegaLoad, Leapwork Play, and the End of Untrustworthy AI Tests TGNS199",
+      "link": "https://testguild.com/podcast/n199-oct26/",
+      "summary": "About This Episode: Can you actually trust the Playwright tests your AI generates? A new free tool says it can [&hellip;]",
+      "source": "Test Guild",
+      "lang": "en",
+      "date": "Mon, 26 Oct 2026 19:28:49 GMT",
+      "ai_comment": ""
+    },
+    {
+      "title": "Cypress Ambassador Spotlight: Kevin Korenhof",
+      "link": "https://www.cypress.io/blog/cypress-ambassador-spotlight-kevin-korenhof/",
+      "summary": "Welcome back to another Ambassador Spotlight. Every post in this series introduces you to one of the people quietly holding up the Cypress community, including where they started, what they believe about testing, and what they've figured out along the way. Curious about the program itself? Learn mor...",
+      "source": "Cypress Blog",
+      "lang": "en",
+      "date": "Thu, 29 Oct 2026 16:19:00 GMT",
+      "ai_comment": ""
+    },
+    {
+      "title": "CypressConf 2026: Answering the signal",
+      "link": "https://www.cypress.io/blog/cypressconf-2026-answering-the-signal/",
+      "summary": "CypressConf 2026 is a wrap! Thank you to everyone who joined us for three days of talks and hands-on workshops. This year&#x2019;s theme, The Signal Is Up, asked a question every team knows well: how do you know a release is ready when the build is green?    From the founders: Quality in the era of ...",
+      "source": "Cypress Blog",
+      "lang": "en",
+      "date": "Mon, 26 Oct 2026 16:25:16 GMT",
+      "ai_comment": ""
+    },
+    {
+      "title": "Scaling Testing Agents Across the Enterprise | mabl",
+      "link": "https://www.mabl.com/blog/scaling-testing-agents-across-the-enterprise",
+      "summary": "This is Part 2 of a 2-part series. Read Part 1 here.  Stanford’s 6x performance boost came from wrapping a single model in a verification harness. But one brilliant testing agent does not provide an enterprise release gate. You need to run thousands of them concurrently across chaotic environments. ...",
+      "source": "Mabl Blog",
+      "lang": "en",
+      "date": "Thu, 29 Oct 2026 14:28:09 GMT",
+      "ai_comment": ""
+    },
+    {
+      "title": "Agentic Testing Is More Than Test Generation | mabl",
+      "link": "https://www.mabl.com/blog/agentic-testing",
+      "summary": "Key Takeaways     Agentic testing goes beyond test generation. AI agents handle test authoring, execution, failure analysis, and recovery.   Teams stay in control. You set the quality standards and decide how much autonomy agents get.   AI-generated code needs independent verification. Coding agents...",
+      "source": "Mabl Blog",
+      "lang": "en",
+      "date": "Wed, 28 Oct 2026 19:56:17 GMT",
+      "ai_comment": ""
+    },
+    {
+      "title": "Testing Harness vs. Coding Harness: Why It Matters | mabl",
+      "link": "https://www.mabl.com/blog/testing-harness-vs.-coding-harness-why-it-matters-mabl",
+      "summary": "Anthropic’s AI-Native SDLC Playbook provides a detailed blueprint for the environment where coding agents run. It builds validation directly into the loop, attempting to ensure every session checks its work before a human reviews it. But a recent Stanford study revealed a massive caveat: the exact s...",
+      "source": "Mabl Blog",
+      "lang": "en",
+      "date": "Tue, 27 Oct 2026 19:58:32 GMT",
+      "ai_comment": ""
+    },
+    {
+      "title": "Bliki: LLM Voice",
+      "link": "https://martinfowler.com/bliki/LLM-Voice.html",
+      "summary": "Sometimes when I read a post, I get the growing feeling that I'm reading   the output of an LLM. I can't necessarily define why, although there are the common   tells (it's not the em-dashes, it's the load-bearing tapestries). As I   do this my desire to read on atrophies, sometimes to the point of ...",
+      "source": "Martin Fowler",
+      "lang": "en",
+      "date": "2026-11-01T12:49:55.480946",
+      "ai_comment": ""
+    },
+    {
+      "title": "Why are good developers so wary of agentic development?",
+      "link": "https://martinfowler.com/rachels-ramblings/good-devs-wary.html",
+      "summary": "TL;DRGood developers’ caution about agentic development comes from knowing that built isn’t the same as working in production. I’ve been surprised by how many excellent developers have been hesitant to go all in on coding agents. These are people who usually try new ways of working before anyone els...",
+      "source": "Martin Fowler",
+      "lang": "en",
+      "date": "2026-11-01T12:49:55.481000",
+      "ai_comment": ""
+    },
+    {
+      "title": "Fragments: October 28",
+      "link": "https://martinfowler.com/fragments/2026-10-28.html",
+      "summary": "Andrej Karpathy sees a widening gap in how people see LLM capabilities.     The general public has mostly not interacted with these systems. When they have, it looks like a derpy chatbot. The majority of professionals still see only a modest uplift. And a small sliver of professionals are experienci...",
+      "source": "Martin Fowler",
+      "lang": "en",
+      "date": "2026-11-01T12:49:55.481072",
+      "ai_comment": ""
+    },
+    {
+      "title": "Report missing and repeated pages in a PDF split plan",
+      "link": "https://dev.to/yanwang/report-missing-and-repeated-pages-in-a-pdf-split-plan-4ndm",
+      "summary": "A split plan for a PDF is a list of parts, and each part is an array of zero-based page indices. When the parts are meant to divide a four-page document without overlap, counting four page references is not enough to establish coverage. [[0,1],[1,3]] contains four references, but index 1 appears twi...",
+      "source": "Dev.to - Testing",
+      "lang": "en",
+      "date": "Sun, 01 Nov 2026 12:02:12 +0000",
+      "ai_comment": ""
+    },
+    {
+      "title": "Hire QA Testers or Earn as an App Tester in India: How TestLancer Works on Both Sides",
+      "link": "https://dev.to/testlancer/hire-qa-testers-or-earn-as-an-app-tester-in-india-how-testlancer-works-on-both-sides-1b2c",
+      "summary": "Small teams ship faster than ever, and testing is usually the first thing to slip. Developers test their own work, a release goes out on Friday, and the bug report comes from a customer on Monday. At the same time, plenty of people in India are looking for honest, flexible ways to earn by testing ap...",
+      "source": "Dev.to - Testing",
+      "lang": "en",
+      "date": "Sun, 01 Nov 2026 11:23:41 +0000",
+      "ai_comment": ""
+    },
+    {
+      "title": "Cypress Email Tests Need a Failure Ledger",
+      "link": "https://dev.to/silviutech/cypress-email-tests-need-a-failure-ledger-3p9k",
+      "summary": "Email verification tests often fail with a message that is too small to be useful: “expected email, but none arrived.” The next run passes, so the team adds a retry. A week later, the same test fails for a different reason and nobody knows which signal to trust.  A failure ledger gives each attempt ...",
+      "source": "Dev.to - Testing",
+      "lang": "en",
+      "date": "Sun, 01 Nov 2026 11:22:41 +0000",
+      "ai_comment": ""
+    },
+    {
+      "title": "Evals tell you which parts of your skill to delete",
+      "link": "https://dev.to/kevinccbsg/evals-tell-you-which-parts-of-your-skill-to-delete-cai",
+      "summary": "A rule the model follows without being told is a rule you're paying to repeat.   Skills grow in one direction. The agent forgets an await: add a line. It mocks the wrong thing: add a paragraph. A new model ships, the old problems stop happening, and the lines stay, because nobody knows which of them...",
+      "source": "Dev.to - Testing",
+      "lang": "en",
+      "date": "Sun, 01 Nov 2026 10:38:17 +0000",
+      "ai_comment": ""
+    },
+    {
+      "title": "The $600M break fee has three triggers, not one: reading section 8.4(c) of the Albertsons/Kroger merger agreement",
+      "link": "https://dev.to/sam_ilands59/the-600m-break-fee-has-three-triggers-not-one-reading-section-84c-of-the-albertsonskroger-hef",
+      "summary": "A summary of the Albertsons/Kroger merger agreement went around saying the $600 million break fee is payable \"only if a court blocks the deal.\" I pulled the filed agreement and read the clause. It has three triggers. One of them does not need a court to finish anything.           The clause   Source...",
+      "source": "Dev.to - Testing",
+      "lang": "en",
+      "date": "Sun, 01 Nov 2026 10:25:42 +0000",
+      "ai_comment": ""
+    },
+    {
+      "title": "Google Play Pre-Launch Report + Closed Testing: Catch Crashes Before Production",
+      "link": "https://dev.to/testlancer/google-play-pre-launch-report-closed-testing-catch-crashes-before-production-3d99",
+      "summary": "Short answer: the pre-launch report is an automated check in Play Console that lists warnings, errors and performance issues for your build. It doesn't replace human testers, but running it alongside your closed test catches technical problems early, so your 14 days of human feedback can focus on us...",
+      "source": "Dev.to - QA",
+      "lang": "en",
+      "date": "Sun, 01 Nov 2026 09:33:31 +0000",
+      "ai_comment": ""
+    },
+    {
+      "title": "Make Playwright Email Tests Explain Their Waits",
+      "link": "https://dev.to/silviutech/make-playwright-email-tests-explain-their-waits-3cp5",
+      "summary": "Email verification tests often fail in a confusing way: the browser is on the right page, the message eventually arrives, and the test still reports only Timeout 30000ms exceeded.  That error is not a diagnosis. It does not tell you whether the application never sent the message, the inbox query use...",
+      "source": "Dev.to - QA",
+      "lang": "en",
+      "date": "Sat, 31 Oct 2026 11:23:34 +0000",
+      "ai_comment": ""
+    },
+    {
+      "title": "Why Modern Android Apps Need Disposable Inboxes for QA & Anti-Spam Testing in 2026",
+      "link": "https://dev.to/shawon_hossain1809256_/why-modern-android-apps-need-disposable-inboxes-for-qa-anti-spam-testing-in-2026-4l45",
+      "summary": "Why Modern Android Apps Need Disposable Inboxes for QA &amp; Anti-Spam Testing in 2026   Testing authentication and user onboarding flows on mobile is notoriously tricky. Every time you run a test on Android emulator or physical device, you need a clean email address to test account creation, magic ...",
+      "source": "Dev.to - QA",
+      "lang": "en",
+      "date": "Sat, 31 Oct 2026 03:39:51 +0000",
+      "ai_comment": ""
+    },
+    {
+      "title": "Automating OTP & Email Verification in Mobile App Testing (Without Burner SIMs)",
+      "link": "https://dev.to/shawon_hossain1809256_/automating-otp-email-verification-in-mobile-app-testing-without-burner-sims-1iki",
+      "summary": "Automating OTP &amp; Email Verification in Mobile App Testing (Without Burner SIMs)   End-to-end (E2E) automated testing of user authentication flows is one of the biggest headaches in modern mobile QA. Every time a test suite creates a new staging user, it inevitably triggers a one-time password (O...",
+      "source": "Dev.to - QA",
+      "lang": "en",
+      "date": "Sat, 31 Oct 2026 03:37:29 +0000",
+      "ai_comment": ""
+    },
+    {
+      "title": "Testing Android App Registration Flows: Why You Need a Disposable Email Strategy",
+      "link": "https://dev.to/shawon_hossain1809256_/testing-android-app-registration-flows-why-you-need-a-disposable-email-strategy-3o7p",
+      "summary": "Testing Android App Registration Flows: Why You Need a Disposable Email Strategy   If you're an Android developer or QA engineer, you already know the pain of testing user registration flows. Every time you need to create a new test user, you need a unique email address.   You try the old myemail+te...",
+      "source": "Dev.to - QA",
+      "lang": "en",
+      "date": "Sat, 31 Oct 2026 03:37:16 +0000",
+      "ai_comment": ""
+    },
+    {
+      "title": "Validating the URL before page.goto() is not enough: redirects slip past Playwright's page.route()",
+      "link": "https://dev.to/curlshot/validating-the-url-before-pagegoto-is-not-enough-redirects-slip-past-playwrights-pageroute-1nko",
+      "summary": "If your service takes a URL from a user and renders it with Playwright, the obvious protection is to check the URL before page.goto(). I tested that on 2026-11-01 and it leaks. A public page that answers 302 Location: http://127.0.0.1/... made Chromium fetch the internal address, and the page conten...",
+      "source": "Dev.to - Playwright",
+      "lang": "en",
+      "date": "Sun, 01 Nov 2026 09:46:43 +0000",
+      "ai_comment": ""
+    },
+    {
+      "title": "AI isn't making me a better coder. The way I use AI is.",
+      "link": "https://dev.to/keepcodn/ai-isnt-making-me-a-better-coder-the-way-i-use-ai-is-2if2",
+      "summary": "Lately, I've been thinking about how AI is changing the way we learn software development.  Many developers worry that relying on AI will weaken problem-solving skills. That's a valid concern, especially if AI is doing all the thinking for us.  Personally, I've taken a different approach.  When I'm ...",
+      "source": "Dev.to - Playwright",
+      "lang": "en",
+      "date": "Sun, 01 Nov 2026 09:11:17 +0000",
+      "ai_comment": ""
+    },
+    {
+      "title": "Introducing Vedha: New Testing framework for Agentic World. Test your web app with an AI agent in 5 minutes (and catch the bugs it would miss)",
+      "link": "https://dev.to/arun_kt_bb670b3a571f5efd8/introducing-vedha-new-testing-framework-for-agentic-world-test-your-web-app-with-an-ai-agent-in-5-1jd3",
+      "summary": "AI agents are good at clicking through a web app. They're bad at knowing whether it actually worked. An agent sees \"Order placed\" on the screen and reports success, even when the API behind it returned 500 and saved nothing.  This tutorial sets up an AI agent that tests your app in a real browser an...",
+      "source": "Dev.to - Playwright",
+      "lang": "en",
+      "date": "Sun, 01 Nov 2026 03:37:29 +0000",
+      "ai_comment": ""
+    },
+    {
+      "title": "Your AI agent writes Playwright tests that pass while your API returns 500",
+      "link": "https://dev.to/arun_kumart_22e9a9959b10/your-ai-agent-writes-playwright-tests-that-pass-while-your-api-returns-500-1p0d",
+      "summary": "AI agents now write a lot of Playwright tests. You ask Claude Code or Copilot to \"add a test for the checkout\", or let an agent explore your app through Playwright MCP and turn what it did into a spec. Healer agents even fix failing tests for you.  Here is the kind of test they write:    import { te...",
+      "source": "Dev.to - Playwright",
+      "lang": "en",
+      "date": "Sun, 01 Nov 2026 03:08:58 +0000",
+      "ai_comment": ""
+    },
+    {
+      "title": "👻 How I Built GhostPR: Turning User Screen Recordings into Verified Git Pull Requests with Kiro",
+      "link": "https://dev.to/milmann_a_b592c338cf0df1f/how-i-built-ghostpr-turning-user-screen-recordings-into-verified-git-pull-requests-with-kiro-2828",
+      "summary": "👻 Target Hackathon: Kiroween 2026  — Frankenstein Category ($100k Prize Pool) Mandatory Hashtags: #KiroweenHackathon26 #AWS #Kiro #Playwright #OpenSource Repository: https://github.com/Miladmet/ghost-pr  Author: Milmann Admettre (@admettre )  The Universal Frontend Nightmare: \"Cannot Reproduce\"  Eve...",
+      "source": "Dev.to - Playwright",
+      "lang": "en",
+      "date": "Sat, 31 Oct 2026 22:32:26 +0000",
+      "ai_comment": ""
+    },
+    {
+      "title": "How I Automate API Testing with Robot Framework and Claude AI",
+      "link": "https://medium.com/@rudrasurti98/how-i-automate-api-testing-with-robot-framework-and-claude-ai-e1a0d637836c?source=rss------software_testing-5",
+      "summary": "A practical, step-by-step guide to building a fast, reliable API test suite with keyword-driven tests and AI assistanceContinue reading on Medium »",
+      "source": "Medium - Software Testing",
+      "lang": "en",
+      "date": "Sun, 01 Nov 2026 12:05:49 GMT",
+      "ai_comment": ""
+    },
+    {
+      "title": "My AI Returned Perfect JSON. Then It Added an Essay.",
+      "link": "https://medium.com/@amrutalohabare/my-ai-returned-perfect-json-then-it-added-an-essay-4ea9c7f32df8?source=rss------software_testing-5",
+      "summary": "Learning to test AI, Session 6 (structured outputs &amp; output validation): the same prompt, two runs, two formats, and why valid JSON isn&#x2019;t&#x2026;Continue reading on Medium »",
+      "source": "Medium - Software Testing",
+      "lang": "en",
+      "date": "Sun, 01 Nov 2026 12:03:59 GMT",
+      "ai_comment": ""
+    },
+    {
+      "title": "Best Enterprise Test Management Tools in 2026",
+      "link": "https://lyrablair.medium.com/best-enterprise-test-management-tools-in-2026-594781b4340c?source=rss------software_testing-5",
+      "summary": "Enterprise software delivery moves fast, making quality assurance a continuous balancing act between rapid release velocity and software&#x2026;Continue reading on Medium »",
+      "source": "Medium - Software Testing",
+      "lang": "en",
+      "date": "Sun, 01 Nov 2026 11:48:06 GMT",
+      "ai_comment": ""
+    },
+    {
+      "title": "8 Testing Strategies That Catch Bugs Before Users Do",
+      "link": "https://medium.com/skillstuff/8-testing-strategies-that-catch-bugs-before-users-do-5c203bc1ef3f?source=rss------software_testing-5",
+      "summary": "Good testing is not about writing more test cases. It is about finding the failures that matter before they reach production.Continue reading on Skill Stuff »",
+      "source": "Medium - Software Testing",
+      "lang": "en",
+      "date": "Sun, 01 Nov 2026 06:24:33 GMT",
+      "ai_comment": ""
+    },
+    {
+      "title": "How AI Actually Uses a Browser (and Why It Passed the Test My Script Failed)",
+      "link": "https://medium.com/@thimayarohit/how-ai-actually-uses-a-browser-and-why-it-passed-the-test-my-script-failed-8b6a71d1dc76?source=rss------software_testing-5",
+      "summary": "Playwright vs. Stagehand on the same job, before and after a redesign, and what is actually happening inside an AI agent that drives a&#x2026;Continue reading on Medium »",
+      "source": "Medium - Software Testing",
+      "lang": "en",
+      "date": "Sun, 01 Nov 2026 06:15:21 GMT",
+      "ai_comment": ""
+    }
+  ],
+  "nihat_yorum": ""
+}
